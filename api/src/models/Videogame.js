@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
    },
    descripcion: {
     type: DataTypes.TEXT,
-    allowNull: false,
+    allowNull: true,
    },
    plataformas:{
     type: DataTypes.ENUM('PlayStation','Xbox','Nintendo','PC','Mobile','Other'),
