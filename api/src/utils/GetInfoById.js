@@ -20,7 +20,7 @@ const dBInfoId = async(idGame) => {
         const videogame = gameDb;
 
     const gameFound = {
-            //id: videogame.id,
+            id: videogame.id,
             name: videogame.nombre,
             description: videogame.descripcion?videogame.descripcion: 'Not description',
             platforms: videogame.plataformas.map(plataforma => plataforma),

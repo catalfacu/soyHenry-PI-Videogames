@@ -1,9 +1,10 @@
 const { gamesInfo,getApiInfo,infoDB } = require('./getInfoGames');
-const {ApiInfoId, dBInfoId} = require('./GetInfoById');
+const {dBInfoId} = require('./GetInfoById');
+const {gameByNameDb} = require('./getInfoByName');
 module.exports = {
     gamesInfo,
     getApiInfo,
     infoDB,
-    ApiInfoId,
-    dBInfoId
+    dBInfoId,
+    gameByNameDb
 };
