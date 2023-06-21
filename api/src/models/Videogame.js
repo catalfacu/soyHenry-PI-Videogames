@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
    },
    nombre: {
     type: DataTypes.STRING,
+    unique: true,
     allowNull: false,
    },
    descripcion: {
@@ -18,8 +19,7 @@ module.exports = (sequelize) => {
     allowNull: true,
    },
    plataformas:{
-    type: DataTypes.ENUM('PlayStation','Xbox','Nintendo','PC','Mobile','Other'),
-    defaultValue: 'Other',
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
    },
    imagen: {
@@ -27,11 +27,11 @@ module.exports = (sequelize) => {
     allowNull: true,
    },
    fecha_de_lanzamiento: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.STRING,
     allowNull: false,
    },
    rating: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false,
     validate: {
       min: 0,
