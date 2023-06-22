@@ -27,7 +27,7 @@ const dBInfoId = async(idGame) => {
             background_image: videogame.imagen,
             released: videogame.fecha_de_lanzamiento,
             rating: videogame.rating,
-            genres: videogame.genre.map(genre => genre.nombre)
+            //genres: videogame.genre.map(genre => genre.nombre)
         }
        return gameFound;
 };
