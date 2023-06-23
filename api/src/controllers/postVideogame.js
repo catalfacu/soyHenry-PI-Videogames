@@ -8,6 +8,7 @@ const postVideogame = async (nombre,descripcion,plataformas,imagen,fecha_de_lanz
         imagen,
         fecha_de_lanzamiento,
         rating,
+        generos
     });
 
     const genreIds = [];

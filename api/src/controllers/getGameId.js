@@ -14,6 +14,8 @@ const getGameById = async (id) => {
     else if(!Number(id)) {
         const dbGame = dBInfoId(id);                                        //TODO: si el id no es un numero, devuelvo la info del juego de la db
         return dbGame;
+    } else {
+        throw new Error(' the ID not exist');
     }
 };
 

@@ -9,7 +9,9 @@ const { Videogame, Genre } = require('../db');
 const gameByNameDb = async(name) => {
     const gamesDb = await Videogame.findAll({
         where: {
-            nombre: {[Op.like]:`%${name}%`}
+            nombre: {
+                [Op.iLike]:`%${name}%`
+            }
         },
         include: {
             model: Genre,                        
