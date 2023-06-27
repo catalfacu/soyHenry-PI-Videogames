@@ -7,6 +7,9 @@ import Form from './components/form/Form';
 
 function App() {
 
+
+
+//*ROUTING
 const navigate = useNavigate();
 function goHome() {
   navigate("/home");

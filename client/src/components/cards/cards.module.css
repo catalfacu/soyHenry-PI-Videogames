@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.filterAndOrder{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap:20px;
+    margin-top: 50px;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
