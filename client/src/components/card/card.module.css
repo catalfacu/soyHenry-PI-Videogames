@@ -12,3 +12,11 @@
     width: 400px;
     height: 200px;
 }
+
+.card h2{
+    font-size: 17px;
+}
+
+.card h3{
+    font-size: 15px;
+}

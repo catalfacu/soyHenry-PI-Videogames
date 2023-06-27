@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
-
+import styles from './navBar.module.css';
 
 export default function NavBar(props) {
     return (
-        <div>
-            <SearchBar/>
+        <div className={styles.container}>
+           
             <NavLink to="/home">
                 <button>Home</button>
-            </NavLink>
+            </NavLink> 
+            <SearchBar/>
             <NavLink to="/form">
                 <button>Create videogame</button>
             </NavLink>

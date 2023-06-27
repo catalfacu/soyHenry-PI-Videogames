@@ -1,6 +1,8 @@
+import styles from './searchBar.module.css';
+
 export default function SearchBar(props) {
     return(
-        <div>
+        <div className={styles.container}>
             <input type="text" />
             <button>Search</button>
         </div>

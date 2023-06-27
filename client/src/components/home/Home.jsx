@@ -2,12 +2,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllGames } from '../../redux/actions';
 import { useEffect } from 'react';
 import Card from '../card/Card';
-import styles from './cards.module.css';
+import styles from './home.module.css';
 import { useState } from 'react';
 import Paginacion from '../paginacion/Paginacion';
 
 
-function Cards(props) {
+function Home(props) {
 
     const [page, setPage] = useState(1);
     const [amountPerPage, setAmountPerPage] = useState(15);
@@ -93,7 +93,7 @@ function Cards(props) {
     );
 };
 
-export default Cards;
+export default Home;
 
 //TODO: 2 select:
 //TODO: 1er select: FILTRAR

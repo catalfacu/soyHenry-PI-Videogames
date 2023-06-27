@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import styles from './paginacion.module.css';
 
 export default function Paginacion(props) {
     const [input, setInput] = useState(1);
@@ -34,7 +34,7 @@ export default function Paginacion(props) {
     };
 
     return (
-        <div>
+        <div className={styles.container}>
             <button
             disabled={props.page === 1 || props.page < 1} 
             onClick={previousPage}>back</button>
