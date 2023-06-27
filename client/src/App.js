@@ -4,6 +4,7 @@ import LandingPage from './components/landing-page/LandingPage';
 import Home from './components/home/Home';
 import NavBar from './components/navbar/NavBar';
 import Form from './components/form/Form';
+import Detail from './components/detail/Detail';
 
 function App() {
 
@@ -26,6 +27,7 @@ const location = useLocation();
         <Route path="/" element= { <LandingPage button={goHome}/> } />
         <Route path="/home" element= { <Home/> } />
         <Route path="/form" element= { <Form/> } />
+        <Route path="/detail/:id" element= { <Detail/> } />
       </Routes>
     </div>
   );

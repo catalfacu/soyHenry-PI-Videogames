@@ -21,7 +21,6 @@ function Home(props) {
     useEffect(()=> { return handleAllGames() },[])
     
     const max = allGames.length / amountPerPage;
-    //console.log(max);
 
     return (
       <div className={styles.container}>
@@ -77,6 +76,7 @@ function Home(props) {
           .map((game) => {
             return (
               <Card
+                id={game.id}
                 key={game.id}
                 image={game.image}
                 name={game.name}

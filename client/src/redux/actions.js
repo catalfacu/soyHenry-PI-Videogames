@@ -1,4 +1,6 @@
-import { ADD_ALLGAMES, ERROR } from "./typesActions";
+import { ADD_ALLGAMES, ERROR, GET_GAMEDETAIL } from "./typesActions";
+import axios from 'axios';
+
 
 const ENDPOINT = 'http://localhost:3001/videogames';
 
@@ -19,4 +21,21 @@ export const getAllGames = () => {
             })
         })     
     }
+};
+
+export const getGameDetail= (id) => {
+ return async(dispatch) => {
+    try {
+        const {data} = await axios(`${ENDPOINT}/${id}`);
+        return dispatch({
+            type: GET_GAMEDETAIL,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: ERROR,
+            payload: error.message
+        })    
+    }
+ }
 };
