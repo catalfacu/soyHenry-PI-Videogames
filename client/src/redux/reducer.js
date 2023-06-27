@@ -1,4 +1,4 @@
-import { ADD_ALLGAMES, GET_GAMEDETAIL } from "./typesActions";
+import { ADD_ALLGAMES, CLEAR_DETAIL, ERROR, GAMESBYNAME, GET_GAMEDETAIL } from "./typesActions";
 
 
 const initialState = {
@@ -22,6 +22,23 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 game: action.payload,
                 errors: false
+            };
+        case CLEAR_DETAIL:
+            return {
+                ...state,
+                game: action.payload,
+                errors:false
+            };
+        case GAMESBYNAME:
+            return {
+                ...state,
+                allGames: action.payload,
+                errors: false
+            };
+        case ERROR:
+            return {
+                ...state,
+                errors: action.payload
             }
         default:
             return {
