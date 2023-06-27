@@ -6,6 +6,7 @@ import { getAllGames, getGamesByName } from '../../redux/actions';
 
 export default function SearchBar(props) {
     const [name, setName] = useState("");
+    const previousValue = "";
     const dispatch = useDispatch();
 
 
@@ -15,9 +16,8 @@ export default function SearchBar(props) {
         //console.log(name);
     };
 
-    const onBlur = (e) => {
-        const {value} = e.target;
-        if(!value) {
+    const onBlur = () => {
+        if(previousValue !== name) {
             dispatch(getAllGames());
         }
     };
@@ -33,7 +33,8 @@ export default function SearchBar(props) {
                 type="text"
                 value={name}
                 onChange={handleChange}
-                onBlur = {onBlur()} />
+                //onBlur = {onBlur()} 
+                />
             <button onClick={()=> onSearch(name)}>Search</button>
         </div>
     )

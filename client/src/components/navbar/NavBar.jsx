@@ -6,6 +6,10 @@ export default function NavBar(props) {
     return (
         <div className={styles.container}>
            
+            <NavLink to="/">
+                Landing
+            </NavLink>
+            
             <NavLink to="/home">
                 <button>Home</button>
             </NavLink> 
