@@ -1,10 +1,11 @@
-import { ADD_ALLGAMES, CLEAR_DETAIL, ERROR, GAMESBYNAME, GET_GAMEDETAIL } from "./typesActions";
+import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, ERROR, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES } from "./typesActions";
 
 
 const initialState = {
     allGames: [],
     games: [],
     game: [],
+    genres: [],
     errors: false
 };
 
@@ -15,6 +16,12 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 allGames: action.payload,
                 games: action.payload,
+                errors: false
+            };
+        case GET_GENRES:
+            return {
+                ...state,
+                genres: action.payload,
                 errors: false
             };
         case GET_GAMEDETAIL:
@@ -33,6 +40,13 @@ export const reducer = (state=initialState, action) => {
             return {
                 ...state,
                 allGames: action.payload,
+                errors: false
+            };
+        case CREATE_GAME:
+            return {
+                ...state,
+                allgames: [...state.allGames,action.payload],
+                games: [...state.games,action.payload],
                 errors: false
             };
         case ERROR:
