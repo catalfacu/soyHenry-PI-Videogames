@@ -80,7 +80,7 @@ function Home(props) {
                 key={game.id}
                 image={game.image}
                 name={game.name}
-                genre={game.genre}
+                genre={game.genres}
               />
             );
           })}

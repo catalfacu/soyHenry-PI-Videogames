@@ -48,7 +48,7 @@ const infoDB = async () => {
     const dbVideogames = await Videogame.findAll({
         include: {
             model: Genre,                             //*Mediante el metodo findAll de sequelize, busco todos los registros de videogames,
-            attributes: ['nombre'],                   //* incluyendo sus relaciones con el modelo Genres
+            attributes: ['name'],                   //* incluyendo sus relaciones con el modelo Genres
             through: {
                 attributes: []
             }
@@ -58,13 +58,13 @@ const infoDB = async () => {
    let gameDBInfo = dbVideogames.map(videogame => {
     return {
         id: videogame.id,
-        name: videogame.nombre,
-        description: videogame.descripcion?videogame.descripcion: 'Not description',
-        platforms: videogame.plataformas.map(plataforma => plataforma),
-        background_image: videogame.imagen,
-        released: videogame.fecha_de_lanzamiento,
+        name: videogame.name,
+        description: videogame.description?videogame.description: 'Not description',
+        platforms: videogame.platforms.map(platform => platform),
+        image: videogame.image,
+        released: videogame.released,
         rating: videogame.rating,
-        genres: videogame.genres.map((genre) => genre.nombre)
+        genres: videogame.genres.map((genre) => genre.name)
     }
    });
    return gameDBInfo; 

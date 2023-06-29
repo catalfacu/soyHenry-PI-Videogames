@@ -9,13 +9,13 @@ const { Videogame, Genre } = require('../db');
 const gameByNameDb = async(name) => {
     const gamesDb = await Videogame.findAll({
         where: {
-            nombre: {
+            name: {
                 [Op.iLike]:`%${name}%`
             }
         },
         include: {
             model: Genre,                        
-            attributes: ['nombre'],                   
+            attributes: ['name'],                   
             through: {
                 attributes: [] 
         }
@@ -25,13 +25,13 @@ const gameByNameDb = async(name) => {
     const gamesFound = gamesDb.map( game => {
         return {
         id: game.id,
-        name: game.nombre,
-        description: game.descripcion? game.descripcion : 'sin descripcion',
-        platforms: game.platformas?.map((platforma) => platforma),
-        background_image: game.imagen,
-        released: game.fecha_de_lanzamiento,
+        name: game.name,
+        description: game.description? game.description : 'sin descripcion',
+        platforms: game.platforms?.map((platform) => platform),
+        image: game.image,
+        released: game.released,
         rating: game.rating,
-        genres: game.genres?.map((genre) => genre.nombre),
+        genres: game.genre?.map((genre) => genre.name),
         }
     });
     return gamesFound;

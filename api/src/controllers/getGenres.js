@@ -6,7 +6,7 @@ const getGenres = async () => {
     const nameGenres = await apiGenres();
     const genres = nameGenres.map(genre => {
         return {
-            nombre: genre
+            name: genre
         };
     });
 

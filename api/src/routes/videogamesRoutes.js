@@ -36,12 +36,12 @@ videogamesRouter.get('/:id', async(req,res) => {
 //?---------POST VIDEOGAME ---------------
 
 videogamesRouter.post('/' ,async(req,res) => {
-    const {nombre,descripcion,plataformas,imagen,fecha_de_lanzamiento,rating,generos} = req.body;
+    const {name,description,platforms,image,released,rating,genre} = req.body;
     try {
-        if(!nombre || !descripcion || !plataformas || !imagen || !fecha_de_lanzamiento || !rating || !generos) {
+        if(!name || !description || !platforms || !image || !released || !rating || !genre) {
             return res.status(400).send("faltan completar datos");
         };
-        const newGame = await postVideogame(nombre,descripcion,plataformas,imagen,fecha_de_lanzamiento,rating,generos);
+        const newGame = await postVideogame(name,description,platforms,image,released,rating,genre);
         return res.status(200).json(newGame);
     } catch (error) {
     return res.status(200).json({err: error.message});

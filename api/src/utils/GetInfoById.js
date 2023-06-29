@@ -11,7 +11,7 @@ const dBInfoId = async(idGame) => {
         ,
         include: {
             model: Genre,                        
-            attributes: ['nombre'],                   
+            attributes: ['name'],                   
             through: {
                 attributes: [] 
         }
@@ -21,13 +21,13 @@ const dBInfoId = async(idGame) => {
 
     const gameFound = {
             id: videogame.id,
-            name: videogame.nombre,
-            description: videogame.descripcion?videogame.descripcion: 'Not description',
-            platforms: videogame.plataformas.map(plataforma => plataforma),
-            background_image: videogame.imagen,
-            released: videogame.fecha_de_lanzamiento,
+            name: videogame.name,
+            description: videogame.description?videogame.description: 'Not description',
+            platforms: videogame.platforms.map(platform => platform),
+            image: videogame.image,
+            released: videogame.released,
             rating: videogame.rating,
-            genres: videogame.genres.map((genre) => genre.nombre)
+            genres: videogame.genres.map((genre) => genre.name)
         }
        return gameFound;
 };

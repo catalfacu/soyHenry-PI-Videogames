@@ -1,22 +1,22 @@
 const {Videogame, Genre} = require('../db');
 
-const postVideogame = async (nombre,descripcion,plataformas,imagen,fecha_de_lanzamiento,rating,generos) => {
+const postVideogame = async (name,description,platforms,image,released,rating,genre) => {
     const newGame = await Videogame.create({
-        nombre,
-        descripcion,
-        plataformas,
-        imagen,
-        fecha_de_lanzamiento,
+        name,
+        description,
+        platforms,
+        image,
+        released,
         rating,
-        generos
+        genre
     });
 
     const genreIds = [];
 
-    for(const genreName of generos) {
+    for(const genreName of genre) {
         const genre = await Genre.findOne({
             where: {
-                nombre: genreName,
+                name: genreName,
             },
         });
         if(genre) {                                                     

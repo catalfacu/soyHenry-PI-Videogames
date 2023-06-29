@@ -25,7 +25,7 @@ export default function Detail(props) {
             <h3>{gameDetail.description}</h3>
             <h3>{gameDetail.released}</h3>
             <h3>{gameDetail.rating}</h3>
-            <h3>{gameDetail.genre}</h3>
+            <h3>{gameDetail.genres}</h3>
             <img src={gameDetail.image} alt={gameDetail.name} />
         </div>
     )

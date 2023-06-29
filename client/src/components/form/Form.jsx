@@ -155,12 +155,12 @@ export default function Form(props) {
            <label>Genero/s: <br />
             {
                genres.map((genre,index) => {
-                  return <label key={index}>{genre.nombre}
+                  return <label key={index}>{genre.name}
                   <input
                      key={index} 
                      type="checkbox" 
                      name="genre" 
-                     value={genre.nombre}
+                     value={genre.name}
                      onClick={handleClickG} />
                   </label>
                })
