@@ -27,7 +27,8 @@ const dBInfoId = async(idGame) => {
             image: videogame.image,
             released: videogame.released,
             rating: videogame.rating,
-            genres: videogame.genres.map((genre) => genre.name)
+            genres: videogame.genres.map((genre) => genre.name),
+            createdInDB: videogame.createdInDB
         }
        return gameFound;
 };

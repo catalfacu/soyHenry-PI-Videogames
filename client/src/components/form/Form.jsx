@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './form.module.css';
 import {useDispatch, useSelector} from 'react-redux';
-import { createGame, getAllGenres } from '../../redux/actions';
+import { createGame } from '../../redux/actions';
 import validation from './Validation';
 
 
@@ -75,9 +75,6 @@ export default function Form(props) {
    const genres = useSelector(state => state.genres);
    const dispatch = useDispatch();
 
-   useEffect(()=> {
-      dispatch(getAllGenres());
-   }, [])
 
 //! -------- SEND INFO ------------------
    const handleSubmit = (e) => {

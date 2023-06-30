@@ -1,6 +1,6 @@
 const {Videogame, Genre} = require('../db');
 
-const postVideogame = async (name,description,platforms,image,released,rating,genre) => {
+const postVideogame = async (name,description,platforms,image,released,rating,genre,) => {
     const newGame = await Videogame.create({
         name,
         description,
@@ -8,7 +8,7 @@ const postVideogame = async (name,description,platforms,image,released,rating,ge
         image,
         released,
         rating,
-        genre
+        genre,
     });
 
     const genreIds = [];

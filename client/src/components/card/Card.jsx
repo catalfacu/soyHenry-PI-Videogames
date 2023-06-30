@@ -10,6 +10,7 @@ export default function Card(props) {
             </Link>
             <h2>{props.name}</h2>
             <h3>{props.genre}</h3>
+            <h3>{props.rating}</h3>
         </div>
     )
 };

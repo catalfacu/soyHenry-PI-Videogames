@@ -1,72 +1,70 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllGames } from '../../redux/actions';
+import { filterByCreation, filterByGenre, getAllGames, getAllGenres, orderedByAbc, orderedByRating } from '../../redux/actions';
 import { useEffect } from 'react';
 import Card from '../card/Card';
 import styles from './home.module.css';
 import { useState } from 'react';
 import Paginacion from '../paginacion/Paginacion';
+import FilterAndOrder from '../filter-and-order/FilterAndOrder';
 
 
 function Home(props) {
 
+//?------------PAGINATED, ALLGAMES AND ALL GENRES -----------------
     const [page, setPage] = useState(1);
+    const [input, setInput] = useState(1);
     const [amountPerPage, setAmountPerPage] = useState(15);
     
-    const allGames = useSelector(state => state.allGames);
+    const genres = useSelector(state => state.genres);
+    const allGames = useSelector(state => state.games);
     const dispatch = useDispatch();
     
     const handleAllGames = () => {
         return dispatch(getAllGames());
     };
-    useEffect(()=> { return handleAllGames() },[])
+
+    useEffect(()=>{ dispatch(getAllGenres())},[]);
+
+    useEffect(()=> { return handleAllGames() },[]);
     
     const max = allGames.length / amountPerPage;
+
+  const handleFilterOrigin = (e) => {
+    const {value} = e.target;
+    e.preventDefault();
+    dispatch(filterByCreation(value));
+    setPage(1);
+    setInput(1);
+  };
+
+  const handleFilterGenre = (e) => {
+    const {value} = e.target;
+    e.preventDefault();
+    dispatch(filterByGenre(value));
+    setPage(1);
+    setInput(1);
+  };
+
+  const handleOrderByAbc = (e) => {
+    const {value} = e.target;
+    e.preventDefault();
+    dispatch(orderedByAbc(value));
+    setPage(1);
+    setInput(1);
+  };
+
+  const handleOrderByRating = (e) => {
+    const {value} = e.target;
+    e.preventDefault();
+    dispatch(orderedByRating(value));
+    setPage(1);
+    setInput(1);
+  };
 
     return (
       <div className={styles.container}>
 
-        <div className={styles.filterAndOrder}>
-        <label>Filtrar por origen:  
-        <select name="filtarPorOrigen">
-          <option value="A">API</option>
-          <option value="DB">Base de datos</option>
-         </select>
-        </label>
-
-        <label> Filtrar por genero: 
-            <select name="filtrarPorGenero">
-                <option value="Ac">Action</option>
-                <option value="Ad">Adventure</option>
-                <option value="Ar">Arcade</option>
-                <option value="BG">Board Games</option>
-                <option value="Ca">Card</option>
-                <option value="Cs">Casual</option>
-                <option value="Ed">Educational</option>
-                <option value="Fa">Family</option>
-                <option value="Fig">Fighting</option>
-                <option value="In">Indie</option>
-                <option value="MM">Massively Multiplayer</option>
-                <option value="Puz">Puzzle</option>
-                <option value="Plat">Platformer</option>
-                <option value="Rac">Racing</option>
-                <option value="RPG">RPG</option>
-                <option value="Shoot">Shooter</option>
-                <option value="Sim">Simulation</option>
-                <option value="Sp">Sports</option>
-                <option value="St">Strategy</option>
-            </select>
-        </label>
-        
-        <label>Ordenar por:  
-            <select name="Ordenar">
-          <option value="AA">Ascendente ABC</option>
-          <option value="DA">Descendente ABC</option>
-          <option value="AR">Ascendente rating</option>
-          <option value="DR">Descendente rating</option>
-            </select>
-        </label>
-         
-        </div>
+        <FilterAndOrder genres={genres} handleFilterOrigin={handleFilterOrigin} handleFilterGenre={handleFilterGenre} handleOrderByAbc={handleOrderByAbc} handleOrderByRating={handleOrderByRating}/>
         
         <div className={styles.cards}>
           {allGames
@@ -81,13 +79,14 @@ function Home(props) {
                 image={game.image}
                 name={game.name}
                 genre={game.genres}
+                rating={game.rating}
               />
             );
           })}
         </div>
 
         <div>
-            <Paginacion page={page} setPage={setPage} max={max} />
+            <Paginacion page={page} setPage={setPage} max={max} input={input} setInput={setInput}/>
         </div>
       </div>
     );

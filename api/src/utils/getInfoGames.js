@@ -18,7 +18,7 @@ const gamesInfo = (videogame) => {
         image: videogame.background_image,
         released: videogame.released,
         rating: videogame.rating,
-        genre: videogame.genres.map( genre => genre.name )
+        genres: videogame.genres.map( genre => genre.name )
     }
 };
 
@@ -64,7 +64,8 @@ const infoDB = async () => {
         image: videogame.image,
         released: videogame.released,
         rating: videogame.rating,
-        genres: videogame.genres.map((genre) => genre.name)
+        genres: videogame.genres.map((genre) => genre.name),
+        createdInDB: videogame.createdInDB
     }
    });
    return gameDBInfo; 

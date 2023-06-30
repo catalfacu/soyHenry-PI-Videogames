@@ -38,5 +38,9 @@ module.exports = (sequelize) => {
       max: 5,
     },
    },
+   createdInDB: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true
+   }
   });
 };

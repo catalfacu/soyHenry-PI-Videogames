@@ -32,6 +32,7 @@ const gameByNameDb = async(name) => {
         released: game.released,
         rating: game.rating,
         genres: game.genre?.map((genre) => genre.name),
+        createdInDb: game.createdInDb
         }
     });
     return gamesFound;

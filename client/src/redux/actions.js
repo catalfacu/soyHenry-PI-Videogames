@@ -1,4 +1,4 @@
-import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, ERROR, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES } from "./typesActions";
+import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, ERROR, FILTER_BY_CREATION, FILTER_BY_GENRE, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES, ORDER_BY_ABC, ORDER_BY_RATING } from "./typesActions";
 import axios from 'axios';
 const ENDPOINT = 'http://localhost:3001/videogames';
 const ENDPOINT_GENRES = 'http://localhost:3001/genres';
@@ -97,4 +97,29 @@ export const createGame = (gameData) => {
            }) 
         }
     }
-}
+};
+
+export const filterByCreation = (creation) => {
+    return {
+        type: FILTER_BY_CREATION,
+        payload: creation
+    }
+};
+export const filterByGenre = (genre) => {
+    return {
+        type: FILTER_BY_GENRE,
+        payload: genre
+    }
+};
+export const orderedByAbc = (order) => {
+    return {
+      type: ORDER_BY_ABC,
+      payload: order,
+    };
+};
+export const orderedByRating = (order) => {
+    return {
+        type: ORDER_BY_RATING,
+        payload: order
+    }
+};

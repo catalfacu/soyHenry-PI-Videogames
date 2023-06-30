@@ -5,3 +5,7 @@ export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GAMESBYNAME = "GAMESBYNAME";
 export const GET_GENRES = "GET_GENRES";
 export const CREATE_GAME = "CREATE_GAME";
+export const FILTER_BY_CREATION = "FILTER_BY_CREATION";
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
+export const ORDER_BY_ABC = "ORDER_BY_ABC";
+export const ORDER_BY_RATING = "ORDER_BY_RATING";

@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import styles from './paginacion.module.css';
 
 export default function Paginacion(props) {
-    const [input, setInput] = useState(1);
 
     const nextPage = () => {
-        setInput(parseInt(input) + 1);
+        props.setInput(parseInt(props.input) + 1);
         props.setPage(parseInt(props.page) + 1);
     };
     const previousPage = () => {
-        setInput(parseInt(input) - 1);
+        props.setInput(parseInt(props.input) - 1);
         props.setPage(parseInt(props.page) - 1);
     };
 
@@ -22,7 +21,7 @@ export default function Paginacion(props) {
                 isNaN(parseInt(e.target.value)) 
             ) {
                 props.setPage(1);
-                setInput(1);
+                props.setInput(1);
             } else {
                 props.setPage(parseInt(e.target.value));
             }
@@ -30,7 +29,7 @@ export default function Paginacion(props) {
     }
 
     const onChange = (e) => {
-        setInput(e.target.value);
+        props.setInput(e.target.value);
     };
 
     return (
@@ -43,7 +42,7 @@ export default function Paginacion(props) {
              onKeyDown={ (e)=> onKeyDown(e) }
              name="page"
              autoComplete="off"
-             value={input} />
+             value={props.input} />
             <p>De: {Math.ceil(props.max)}</p>
             <button
             disabled={props.page === Math.ceil(props.max)} 
