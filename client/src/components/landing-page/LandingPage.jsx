@@ -13,9 +13,6 @@ function LandingPage(props) {
             <div className={styles.aboutMe}>
             <img src="https://fontmeme.com/permalink/230701/bc677451588e40819330a9718ea3f3b5.png" alt="fuente-grand-theft-auto" border="0"/>
             </div>
-            
-           
-            
         </div>
     );
 };

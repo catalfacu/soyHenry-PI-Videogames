@@ -7,6 +7,7 @@ export default function Paginacion(props) {
         props.setInput(parseInt(props.input) + 1);
         props.setPage(parseInt(props.page) + 1);
     };
+
     const previousPage = () => {
         props.setInput(parseInt(props.input) - 1);
         props.setPage(parseInt(props.page) - 1);
@@ -26,7 +27,7 @@ export default function Paginacion(props) {
                 props.setPage(parseInt(e.target.value));
             }
         }
-    }
+    };
 
     const onChange = (e) => {
         props.setInput(e.target.value);

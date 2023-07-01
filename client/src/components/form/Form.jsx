@@ -84,17 +84,26 @@ export default function Form(props) {
 
    return (
     <div className={styles.container}>
-        <h1>Create your videogame!</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
 
            <label>Nombre: <br /> 
+           {errors.name && <p>{errors.name}</p>} 
               <input
                name="name"
                value= {formCreate.name}
                type="text"
                placeholder="ingrese un nombre..."
                onChange= {handleChange} /> 
-           </label> 
+           </label>
+
+           <label>Descripcion: <br />
+           {errors.description && <p>{errors.description}</p>}
+           <textarea 
+               value={formCreate.description}
+               name="description"
+               onChange={handleChange}>
+               </textarea>
+           </label>
 
            <label>Imagen: <br />
              <input
@@ -104,17 +113,10 @@ export default function Form(props) {
                placeholder="coloque una imagen..."
                onChange= {handleChange} />  
            </label>
-           
 
-           <label>Descripcion: <br />
-           <textarea 
-               value={formCreate.description}
-               name="description"
-               onChange={handleChange}>
-               </textarea>
-           </label>
-
-          <label>Plataformas: <br />
+           <label>Plataformas: <br />
+            {errors.platforms && <p className={styles.platforms}>{errors.platforms}</p>}
+         <div className={styles.selects}>
             {
                platforms.map((platform,index) => {
                   return <label key={index}>{platform}
@@ -127,30 +129,15 @@ export default function Form(props) {
                   </label>
                })
             }
-          </label>
-               <br />
-           <label>Fecha de Lanzamiento: <br />
-               <input
-               name="released"
-               value= {formCreate.released}  
-               type="date"
-               onChange={handleChange} />
-           </label>
+         </div>
+          </label> 
+          
 
-           <label>Rating: <br />
-               <input 
-               name="rating"
-               value= {formCreate.rating}
-               type="number"
-               min= "0"
-               max= "5"
-               step="0.1"
-               onChange={handleChange} />
-           </label>
-           
 
            <label>Genero/s: <br />
-            {
+            {errors.genre && <p className={styles.genres}>{errors.genre}</p>}
+           <div className={styles.selects}>
+             {
                genres.map((genre,index) => {
                   return <label key={index}>{genre.name}
                   <input
@@ -162,8 +149,36 @@ export default function Form(props) {
                   </label>
                })
             }
+           </div>
+           
            </label>
-           <button type="submit" disabled={errors.length}>GUARDAR</button>  
+
+           <label>Fecha de Lanzamiento: <br />
+           {errors.released && <p>{errors.released}</p>}
+               <input
+               name="released"
+               value= {formCreate.released}  
+               type="date"
+               onChange={handleChange} />
+           </label>
+
+           <label>Rating: <br />
+           {errors.rating && <p>{errors.rating}</p>}
+               <input 
+               name="rating"
+               value= {formCreate.rating}
+               type="number"
+               min= "0"
+               max= "5"
+               step="0.01"
+               onChange={handleChange} />
+           </label>
+           
+
+           <button 
+            type="submit" 
+            disabled={errors.name || errors.description || errors.image || errors.platforms || errors.genre || errors.released || errors.rating}
+            >GUARDAR</button>  
         </form>
     </div>
    ) 

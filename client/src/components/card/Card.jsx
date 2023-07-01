@@ -9,8 +9,8 @@ export default function Card(props) {
             <img src={props.image} alt={props.name} />
             </Link>
             <h2>{props.name}</h2>
-            <h3>{props.genre}</h3>
-            <h3>{props.rating}</h3>
+            <h3>{props.genre?.join('|')}</h3>
+            <h3>{props.rating}⭐</h3>
         </div>
     )
 };

@@ -33,6 +33,7 @@ export default function SearchBar(props) {
                 type="text"
                 value={name}
                 onChange={handleChange}
+                placeholder=' Buscar juegos...'
                 //onBlur = {onBlur()} 
                 />
             <button onClick={()=> onSearch(name)}>Search</button>

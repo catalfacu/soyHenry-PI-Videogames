@@ -2,8 +2,22 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
     gap: 30px;
     border: 2px transparent;
-    margin-top: 10px
+    background-color: rgba(82, 25, 72, 0.63);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.container img{
+    transition: .5s, color .10s;
+    -webkit-transition: .5s, color .10s;
+    -moz-transition: .5s, color .10s;
+}
+
+.container img:hover{
+    box-shadow: 0 8px 8px 0 #000000,0 8px 8px 0 #000000;
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    -moz-transform:translate(0px,5px);
 }
