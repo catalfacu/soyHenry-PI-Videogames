@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'priceDown';
+    src: url(../../assets/fonts/pricedown/pricedown\ bl.ttf);
+    font-weight: bold;
+    font-style: bold;
+}
+
+.container{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.container div{
+    margin: 30px;
+}
+
+.aboutMe{
+    font-size: 20px;
+}
+
+.landingButton {
+    background: #e62bda7a;
+    background-image: -webkit-linear-gradient(top, #e62bda60, #4412a16c);
+    background-image: -moz-linear-gradient(top, #e62bda, #4412a1);
+    background-image: -ms-linear-gradient(top, #e62bda, #4412a1);
+    background-image: -o-linear-gradient(top, #e62bda, #4412a1);
+    background-image: linear-gradient(to bottom, #e62bda, #4412a1);
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    border-radius: 15px;
+    text-shadow: 0px 2px 0px #666666;
+    -webkit-box-shadow: 0px 4px 12px #666666;
+    -moz-box-shadow: 0px 4px 12px #666666;
+    box-shadow: 0px 4px 12px #666666;
+    font-family: priceDown;
+    color: #ffffff;
+    font-size: 50px;
+    padding: 2px 41px 2px 41px;
+    text-decoration: none;
+    border: 5px solid black
+  }
+  
+  .landingButton:hover {
+    background: #f2f4f5;
+    text-decoration: none;
+    color:black
+  }

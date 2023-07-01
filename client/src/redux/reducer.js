@@ -60,7 +60,7 @@ export const reducer = (state=initialState, action) => {
             if(action.payload === "A") return {...state, games: filterCreationApi};
 
         case FILTER_BY_GENRE:
-            if(action.payload === 'D') return {...state, allGames: state.games};
+            if(action.payload === 'D') return {...state, games: state.allGames};
 
             let copyGames2 = state.allGames.filter(game => game.genres.includes(action.payload));
 
@@ -91,7 +91,7 @@ export const reducer = (state=initialState, action) => {
             }
 
         case ORDER_BY_RATING: 
-        if(action.payload === "D") return {...state, allGames: state.games};
+        if(action.payload === "D") return {...state, games: state.allGames};
 
         const copyGames4 = state.allGames.sort((a,b) => {
             if(action.payload === "AR") {
@@ -103,7 +103,7 @@ export const reducer = (state=initialState, action) => {
 
         return {
             ...state,
-            allGames: copyGames4
+            games: copyGames4
         };
         case ERROR:
             return {

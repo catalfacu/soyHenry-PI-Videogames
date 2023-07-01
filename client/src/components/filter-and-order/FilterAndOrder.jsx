@@ -1,7 +1,9 @@
+import styles from './filterAndOrder.module.css';
+
 
 export default function({genres,handleFilterOrigin,handleFilterGenre,handleOrderByAbc,handleOrderByRating}) {
     return(
-        <div>
+        <div className={styles.container}>
           <label>Filtrar por origen:  
         <select name="filtarPorOrigen" onChange={(e)=> handleFilterOrigin(e)}>
           <option value="D">Default</option>

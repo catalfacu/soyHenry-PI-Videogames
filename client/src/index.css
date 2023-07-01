@@ -3,6 +3,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  background-image: url(https://images.hdqwalls.com/wallpapers/gta-vice-city-skyline-palm-trees-if.jpg);
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-position: center center;
+  background-size:cover;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
