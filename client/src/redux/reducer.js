@@ -49,6 +49,7 @@ export const reducer = (state=initialState, action) => {
                 games: [...state.games,action.payload],
                 errors: false
             };
+            
         case FILTER_BY_CREATION:
             if(action.payload === "D") return {...state, games: state.allGames};
 
@@ -68,48 +69,43 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 games: copyGames2
             };
+
         case ORDER_BY_ABC:
-            if(action.payload === "D") return {...state, games: state.allGames};
-
-            let orderName = action.payload === "AA" ? 
-            state.games.sort((a,b) => {
-                if (a.name > b.name) return 1;
-                if (b.name > a.name) return -1;
-
-                return 0
-            }) :
-            state.games.sort((a,b) => {
-                if (a.name > b.name) return -1;
-                if (b.name > a.name) return 1;
-
-                return 0
-            })
+            let orderedGamesAbc = [];    //el metodo sort no modifica el array original, lo ordena y devuelve una nueva referencia del array pero ordenado
+            if(action.payload === "D") {
+                orderedGamesAbc = state.allGames;
+            } else {
+                orderedGamesAbc = action.payload === "AA"
+                ? [...state.games].sort((a,b)=> (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
+                : [...state.games].sort((a,b)=> (a.name > b.name ? -1 : b.name > a.name ? 1 : 0))
+            };
 
             return{
                 ...state,
-                games: orderName
-            }
+                games: orderedGamesAbc
+            };
 
-        case ORDER_BY_RATING: 
-        if(action.payload === "D") return {...state, games: state.allGames};
-
-        const copyGames4 = state.allGames.sort((a,b) => {
-            if(action.payload === "AR") {
-                return a.rating - b.rating;
-            } else if(action.payload === "DR") {
-                return b.rating - a.rating;
-            }
-        });
+        case ORDER_BY_RATING:
+        let orderedGamesRating = []; 
+        if(action.payload === "D") {
+            orderedGamesRating = state.allGames;
+        } else {
+            orderedGamesRating = action.payload === "AR"
+            ? [...state.games].sort((a,b) => (a.rating - b.rating))
+            : [...state.games].sort((a,b) => (b.rating - a.rating))
+        };
 
         return {
             ...state,
-            games: copyGames4
+            games: orderedGamesRating
         };
+
         case ERROR:
             return {
                 ...state,
                 errors: action.payload
             };
+
         default:
             return {
                 ...state

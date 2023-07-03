@@ -1,76 +1,55 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { filterByCreation, filterByGenre, getAllGames, getAllGenres, orderedByAbc, orderedByRating } from '../../redux/actions';
+import {getAllGames, getAllGenres} from '../../redux/actions';
 import { useEffect } from 'react';
+import { useState } from 'react';
 import Card from '../card/Card';
 import styles from './home.module.css';
-import { useState } from 'react';
 import Paginacion from '../paginacion/Paginacion';
 import FilterAndOrder from '../filter-and-order/FilterAndOrder';
+import Loader from '../loader/Loader';
 
 
 function Home(props) {
+  //?------------PAGINATED, ALLGAMES AND ALL GENRES -----------------
+  const [page, setPage] = useState(1);
+  const [amountPerPage, setAmountPerPage] = useState(15);
+  const [input, setInput] = useState(1);
+  const [allOk, setAllOk] = useState(false);
 
-//?------------PAGINATED, ALLGAMES AND ALL GENRES -----------------
-    const [page, setPage] = useState(1);
-    const [input, setInput] = useState(1);
-    const [amountPerPage, setAmountPerPage] = useState(15);
-    
-    const genres = useSelector(state => state.genres);
-    const allGames = useSelector(state => state.games);
-    const dispatch = useDispatch();
-    
-    const handleAllGames = () => {
-        return dispatch(getAllGames());
-    };
+  const genres = useSelector((state) => state.genres);
+  const allGames = useSelector((state) => state.games);
+  const dispatch = useDispatch();
 
-    useEffect(()=>{ dispatch(getAllGenres())},[]);
+  useEffect(() => {
+    if (allGames.length === 0) {
+      setAllOk(true);
+      dispatch(getAllGenres());
+      dispatch(getAllGames());
+    } else {
+      setAllOk(false);
+    }
+  }, [allGames]);
 
-    useEffect(()=> { return handleAllGames() },[]);
-    
-    const max = allGames.length / amountPerPage;
+  const max = allGames.length / amountPerPage;
 
-  const handleFilterOrigin = (e) => {
-    const {value} = e.target;
-    e.preventDefault();
-    dispatch(filterByCreation(value));
-    setPage(1);
-    setInput(1);
-  };
+  return (
+    <div className={styles.container}>
+      <FilterAndOrder
+        genres={genres}
+        page={page}
+        setPage={setPage}
+        input={input}
+        setInput={setInput}
+      />
 
-  const handleFilterGenre = (e) => {
-    const {value} = e.target;
-    e.preventDefault();
-    dispatch(filterByGenre(value));
-    setPage(1);
-    setInput(1);
-  };
-
-  const handleOrderByAbc = (e) => {
-    const {value} = e.target;
-    e.preventDefault();
-    dispatch(orderedByAbc(value));
-    setPage(1);
-    setInput(1);
-  };
-
-  const handleOrderByRating = (e) => {
-    const {value} = e.target;
-    e.preventDefault();
-    dispatch(orderedByRating(value));
-    setPage(1);
-    setInput(1);
-  };
-
-    return (
-      <div className={styles.container}>
-
-        <FilterAndOrder genres={genres} handleFilterOrigin={handleFilterOrigin} handleFilterGenre={handleFilterGenre} handleOrderByAbc={handleOrderByAbc} handleOrderByRating={handleOrderByRating}/>
-        
-        <div className={styles.cards}>
-          {allGames
-          .slice( 
-            (page - 1 ) * amountPerPage,
-            (page - 1) * amountPerPage + amountPerPage)
+      {allOk ? <Loader /> : null}
+      
+      <div className={styles.cards}>
+        {allGames
+          .slice(
+            (page - 1) * amountPerPage,
+            (page - 1) * amountPerPage + amountPerPage
+          )
           .map((game) => {
             return (
               <Card
@@ -83,27 +62,19 @@ function Home(props) {
               />
             );
           })}
-        </div>
-
-        <div>
-            <Paginacion page={page} setPage={setPage} max={max} input={input} setInput={setInput}/>
-        </div>
       </div>
-    );
+
+      <div>
+        <Paginacion
+          page={page}
+          setPage={setPage}
+          max={max}
+          input={input}
+          setInput={setInput}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Home;
-
-//TODO: 2 select:
-//TODO: 1er select: FILTRAR
-//              a_ filtrar por genero
-//              b_ origen de la api
-//              c_ origen de la Db
-
-//TODO: 2do select: ORDENAMIENTO
-//              a_ascendente por orden alfabetico
-//              a_1_descendente por orden alfabetico
-
-//              b_ascendente por rating
-//              b_1_descendente por rating
-

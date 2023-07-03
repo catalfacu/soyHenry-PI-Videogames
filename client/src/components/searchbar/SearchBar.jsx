@@ -1,26 +1,20 @@
 import React, { useState } from 'react';
 
 import styles from './searchBar.module.css';
-import { useDispatch} from 'react-redux';
-import { getAllGames, getGamesByName } from '../../redux/actions';
+import { useDispatch, useSelector} from 'react-redux';
+import {getGamesByName} from '../../redux/actions';
 
 export default function SearchBar(props) {
     const [name, setName] = useState("");
-    const previousValue = "";
+    const games = useSelector(state => state.games);
     const dispatch = useDispatch();
 
 
     const handleChange = (e) => {
         const {value} = e.target;
         setName(value);
-        //console.log(name);
     };
 
-    const onBlur = () => {
-        if(previousValue !== name) {
-            dispatch(getAllGames());
-        }
-    };
 
     const onSearch = () => {
         dispatch(getGamesByName(name));
@@ -34,9 +28,8 @@ export default function SearchBar(props) {
                 value={name}
                 onChange={handleChange}
                 placeholder=' Buscar juegos...'
-                //onBlur = {onBlur()} 
                 />
-            <button onClick={()=> onSearch(name)}>Search</button>
+            <button onClick={(name)=> onSearch(name)}>Search</button>
         </div>
     )
 };

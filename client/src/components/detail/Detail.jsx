@@ -5,18 +5,18 @@ import { clearDetail, getGameDetail } from "../../redux/actions";
 import styles from "./detail.module.css";
 
 export default function Detail(props) {
+
     const {id} = useParams();
     let gameDetail = useSelector(state => state.game);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getGameDetail(id))
+            dispatch(getGameDetail(id))
         return () => {
             dispatch(clearDetail());
         }
     },[dispatch,id]);
 
-    console.log(gameDetail.platforms);
     return (
         <div className={styles.container}>
             <h1 style={{'fontSize':'50px'}}>{gameDetail.name}</h1>
