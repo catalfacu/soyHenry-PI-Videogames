@@ -7,6 +7,7 @@ import styles from './home.module.css';
 import Paginacion from '../paginacion/Paginacion';
 import FilterAndOrder from '../filter-and-order/FilterAndOrder';
 import Loader from '../loader/Loader';
+import Message from '../message/Message';
 
 
 function Home(props) {
@@ -15,7 +16,9 @@ function Home(props) {
   const [amountPerPage, setAmountPerPage] = useState(15);
   const [input, setInput] = useState(1);
   const [allOk, setAllOk] = useState(false);
+  const [err, setErr] = useState(true);
 
+  const errors = useSelector((state) => state.errors);
   const genres = useSelector((state) => state.genres);
   const allGames = useSelector((state) => state.games);
   const dispatch = useDispatch();
@@ -27,11 +30,12 @@ function Home(props) {
       dispatch(getAllGames());
     } else {
       setAllOk(false);
+      setErr(false);
     }
   }, [allGames]);
 
   const max = allGames.length / amountPerPage;
-
+  console.log(errors);
   return (
     <div className={styles.container}>
       <FilterAndOrder
@@ -42,6 +46,7 @@ function Home(props) {
         setInput={setInput}
       />
 
+      {err ? <Message errors={errors}/> : null} 
       {allOk ? <Loader /> : null}
       
       <div className={styles.cards}>

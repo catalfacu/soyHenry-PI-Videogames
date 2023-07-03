@@ -12,6 +12,9 @@ videogamesRouter.get('/' , async(req,res) => {
     try {
         if(name) {
             const games = await gamesByName(name.toLocaleLowerCase());
+            if(games.length === 0) {
+                return res.status(404).json({err:'404 NOT FOUND'});
+            }
             return res.status(200).json(games);
         }
         return res.status(200).json(allGames);

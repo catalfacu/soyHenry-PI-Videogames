@@ -1,9 +1,17 @@
+@font-face {
+    font-family: 'Futura Bold' ;
+    src: url(../../assets/fonts/Futura\ Bold/Futura-Bold.otf);
+    font-weight: bold;
+    font-style: bold;
+}
+
 .container{
     display: inline-flex;
     justify-content: flex-start;
     align-items: start;
     flex-direction: column;
     margin-top: 10px;
+    font-family: 'Futura Bold';
 }
 
 .form{
@@ -20,32 +28,57 @@
     margin-right: 200px;
 }
 
-.form p {
-    display: inline;
-    position: fixed;
-    left: 57%;
-    color: rgb(255, 123, 0)
+.form button {
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    font-family: 'Futura Bold';
+    color: white;
+    background-color: black;
+    border: transparent;
+    border-radius: 10px;
 }
 
-.selects label{
+.form button:disabled {
+    background-color: red;
+    cursor:no-drop;
+}
+
+.option{
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
-    margin:5px;
+}
+.option label{
+    display: inline-flex;
+    padding: 2px;
+    gap:5px
 }
 
-.selects input{
-    cursor:pointer;
+.option p{
+ color: rgb(250, 234, 10);
+}
+.option input{
+    width: 150px;
+    height: 20px;
+    text-align: center;
+    font-family: 'Futura Bold';
+    border:transparent;
+    border-radius: 10px;
+}
+.option textarea{
+    border: transparent;
+    border-radius: 10px;
 }
 
-.platforms{
-    display: inline;
-    position:relative;
-    top: 285px;
-    left:50px
+.checkbox label{
+    padding: 10px;
 }
+.checkbox input{
+    cursor: pointer;
+}
+.checkbox p{
+    color:rgb(250, 234, 10);
+   }
 
-.genres{
-    display: inline;
-    position: relative;
-    bottom:250px;
-}

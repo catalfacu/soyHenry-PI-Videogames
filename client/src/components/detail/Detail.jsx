@@ -8,6 +8,7 @@ export default function Detail(props) {
 
     const {id} = useParams();
     let gameDetail = useSelector(state => state.game);
+    let errors = useSelector(state => state.errors);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,7 +17,7 @@ export default function Detail(props) {
             dispatch(clearDetail());
         }
     },[dispatch,id]);
-
+    console.log(errors);
     return (
         <div className={styles.container}>
             <h1 style={{'fontSize':'50px'}}>{gameDetail.name}</h1>

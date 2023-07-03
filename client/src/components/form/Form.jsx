@@ -12,7 +12,7 @@ export default function Form(props) {
       platforms: [],
       image: "",
       released: "",
-      rating: 0,
+      rating: null,
       genre: []
    });
 
@@ -86,25 +86,31 @@ export default function Form(props) {
     <div className={styles.container}>
         <form className={styles.form} onSubmit={handleSubmit}>
 
-           <label>Nombre: <br /> 
-           {errors.name && <p>{errors.name}</p>} 
+         <div className={styles.option}>
+            <label>Nombre: <br /> 
               <input
                name="name"
                value= {formCreate.name}
                type="text"
                placeholder="ingrese un nombre..."
                onChange= {handleChange} /> 
-           </label>
-
-           <label>Descripcion: <br />
-           {errors.description && <p>{errors.description}</p>}
+           </label> 
+            {errors.name && <p>{errors.name}</p>} 
+         </div>
+          
+         <div className={styles.option}>
+            <label>Descripcion: <br />
            <textarea 
                value={formCreate.description}
                name="description"
                onChange={handleChange}>
                </textarea>
            </label>
+            {errors.description && <p>{errors.description}</p>}
+         </div>
+           
 
+         <div className={styles.option}>
            <label>Imagen: <br />
              <input
                name="image"
@@ -112,11 +118,13 @@ export default function Form(props) {
                type="url"
                placeholder="coloque una imagen..."
                onChange= {handleChange} />  
-           </label>
+           </label> 
+         </div>
+           
 
-           <label>Plataformas: <br />
-            {errors.platforms && <p className={styles.platforms}>{errors.platforms}</p>}
-         <div className={styles.selects}>
+         <div className={styles.checkbox}>
+             <label>Plataformas: <br />
+            {errors.platforms && <p>{errors.platforms}</p>}
             {
                platforms.map((platform,index) => {
                   return <label key={index}>{platform}
@@ -129,14 +137,13 @@ export default function Form(props) {
                   </label>
                })
             }
+          </label>
          </div>
-          </label> 
+           
           
-
-
+         <div className={styles.checkbox}>
            <label>Genero/s: <br />
-            {errors.genre && <p className={styles.genres}>{errors.genre}</p>}
-           <div className={styles.selects}>
+            {errors.genre && <p>{errors.genre}</p>}
              {
                genres.map((genre,index) => {
                   return <label key={index}>{genre.name}
@@ -149,21 +156,24 @@ export default function Form(props) {
                   </label>
                })
             }
-           </div>
+           </label> 
+         </div>
            
-           </label>
-
+         
+         <div className={styles.option}>
            <label>Fecha de Lanzamiento: <br />
-           {errors.released && <p>{errors.released}</p>}
                <input
                name="released"
                value= {formCreate.released}  
                type="date"
                onChange={handleChange} />
-           </label>
-
-           <label>Rating: <br />
-           {errors.rating && <p>{errors.rating}</p>}
+           </label> 
+            {errors.released && <p>{errors.released}</p>}
+         </div>
+           
+         
+         <div className={styles.option}>
+            <label>Rating: <br />
                <input 
                name="rating"
                value= {formCreate.rating}
@@ -173,8 +183,9 @@ export default function Form(props) {
                step="0.01"
                onChange={handleChange} />
            </label>
+            {errors.rating && <p>{errors.rating}</p>}
+         </div>
            
-
            <button 
             type="submit" 
             disabled={errors.name || errors.description || errors.image || errors.platforms || errors.genre || errors.released || errors.rating}
@@ -183,13 +194,3 @@ export default function Form(props) {
     </div>
    ) 
 }; 
-
-
-//// Nombre.
-//// Imagen.
-//// Descripción.
-//// Plataformas.
-//// Fecha de lanzamiento.
-//// Rating.
-////Posibilidad de seleccionar/agregar varios géneros en simultáneo.
-//// Botón para crear el nuevo videojuego.

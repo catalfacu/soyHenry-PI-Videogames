@@ -6,6 +6,7 @@ import {getGamesByName} from '../../redux/actions';
 
 export default function SearchBar(props) {
     const [name, setName] = useState("");
+    const errors = useSelector(state => state.errors);
     const games = useSelector(state => state.games);
     const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ export default function SearchBar(props) {
     const onSearch = () => {
         dispatch(getGamesByName(name));
     };
-
+    console.log(errors);
 
     return(
         <div className={styles.container}>

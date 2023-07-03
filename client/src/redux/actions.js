@@ -7,7 +7,12 @@ const ENDPOINT_GENRES = 'http://localhost:3001/genres';
 export const getAllGames = () => {
     return (dispatch) => {
         fetch(ENDPOINT)
-        .then(response => response.json())
+        .then((response) => {
+            if(!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            return response.json()
+        })
         .then(data => {
             return dispatch({
                 type: ADD_ALLGAMES,
