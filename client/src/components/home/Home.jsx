@@ -15,7 +15,7 @@ function Home(props) {
   const [page, setPage] = useState(1);
   const [amountPerPage, setAmountPerPage] = useState(15);
   const [input, setInput] = useState(1);
-  const [allOk, setAllOk] = useState(false);
+  const [Loading, setLoading] = useState(false);
   const [err, setErr] = useState(true);
 
   const errors = useSelector((state) => state.errors);
@@ -25,17 +25,17 @@ function Home(props) {
 
   useEffect(() => {
     if (allGames.length === 0) {
-      setAllOk(true);
+      setLoading(true);
       dispatch(getAllGenres());
       dispatch(getAllGames());
     } else {
-      setAllOk(false);
+      setLoading(false);
       setErr(false);
     }
   }, [allGames]);
 
   const max = allGames.length / amountPerPage;
-  console.log(errors);
+
   return (
     <div className={styles.container}>
       <FilterAndOrder
@@ -46,9 +46,9 @@ function Home(props) {
         setInput={setInput}
       />
 
-      {err ? <Message errors={errors}/> : null} 
-      {allOk ? <Loader /> : null}
-      
+      {err ? <Message errors={errors} /> : null}
+      {Loading ? <Loader /> : null}
+
       <div className={styles.cards}>
         {allGames
           .slice(

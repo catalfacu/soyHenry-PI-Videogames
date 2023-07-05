@@ -6,7 +6,7 @@ const initialState = {
     games: [],
     game: [],
     genres: [],
-    errors: false
+    errors: null
 };
 
 export const reducer = (state=initialState, action) => {
@@ -16,38 +16,38 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 allGames: action.payload,
                 games: action.payload,
-                errors: false
+                errors: null
             };
         case GET_GENRES:
             return {
                 ...state,
                 genres: action.payload,
-                errors: false
+                errors: null
             };
         case GET_GAMEDETAIL:
             return {
                 ...state,
                 game: action.payload,
-                errors: false
+                errors: null
             };
         case CLEAR_DETAIL:
             return {
                 ...state,
                 game: action.payload,
-                errors:false
+                errors: null
             };
         case GAMESBYNAME:
             return {
                 ...state,
                 games: action.payload,
-                errors: false
+                errors: null
             };
         case CREATE_GAME:
             return {
                 ...state,
                 allGames: [...state.allGames,action.payload],
                 games: [...state.games,action.payload],
-                errors: false
+                errors: null
             };
             
         case FILTER_BY_CREATION:

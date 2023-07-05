@@ -6,8 +6,9 @@ import {getGamesByName} from '../../redux/actions';
 
 export default function SearchBar(props) {
     const [name, setName] = useState("");
-    const errors = useSelector(state => state.errors);
+    const [error, setError] = useState(false);
     const games = useSelector(state => state.games);
+    const errors = useSelector(state => state.errors);
     const dispatch = useDispatch();
 
 
@@ -16,11 +17,10 @@ export default function SearchBar(props) {
         setName(value);
     };
 
-
     const onSearch = () => {
         dispatch(getGamesByName(name));
+        if(errors !== null) return window.alert(`${errors.status}-${errors.statusText}:${errors.data}`);
     };
-    console.log(errors);
 
     return(
         <div className={styles.container}>
@@ -30,7 +30,7 @@ export default function SearchBar(props) {
                 onChange={handleChange}
                 placeholder=' Buscar juegos...'
                 />
-            <button onClick={(name)=> onSearch(name)}>Search</button>
+            <button onClick={()=> onSearch()}>Search</button>
         </div>
     )
 };

@@ -13,7 +13,7 @@ videogamesRouter.get('/' , async(req,res) => {
         if(name) {
             const games = await gamesByName(name.toLocaleLowerCase());
             if(games.length === 0) {
-                return res.status(404).json({err:'404 NOT FOUND'});
+                return res.status(404).send('the game you are looking for does not exist');
             }
             return res.status(200).json(games);
         }
@@ -47,7 +47,7 @@ videogamesRouter.post('/' ,async(req,res) => {
         const newGame = await postVideogame(name,description,platforms,image,released,rating,genre);
         return res.status(200).json(newGame);
     } catch (error) {
-    return res.status(200).json({err: error.message});
+    return res.status(500).json({err: error.message});
     }
 });
 

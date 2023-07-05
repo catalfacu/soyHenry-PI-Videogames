@@ -7,8 +7,8 @@
 
 .container{
     display: inline-flex;
-    justify-content: flex-start;
-    align-items: start;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin-top: 10px;
     font-family: 'Futura Bold';
@@ -37,6 +37,7 @@
     background-color: black;
     border: transparent;
     border-radius: 10px;
+    cursor:pointer
 }
 
 .form button:disabled {
@@ -82,3 +83,6 @@
     color:rgb(250, 234, 10);
    }
 
+.gameSaved{
+    color:  rgb(46, 150, 46);
+}

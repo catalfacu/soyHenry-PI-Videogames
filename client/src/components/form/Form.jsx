@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './form.module.css';
 import {useDispatch, useSelector} from 'react-redux';
 import { createGame } from '../../redux/actions';
@@ -6,13 +6,15 @@ import validation from './Validation';
 
 
 export default function Form(props) {
+   const [loading, setLoading] = useState(false);
+   const [allOk, setAllOK] = useState(false);
    const [formCreate, setFormCreate] = useState({
       name: "",
       description: "",
       platforms: [],
       image: "",
       released: "",
-      rating: null,
+      rating: 0,
       genre: []
    });
 
@@ -22,9 +24,15 @@ export default function Form(props) {
       platforms: "",
       image: "",
       released: "",
-      rating: 0,
+      rating: "",
       genre: ""
    });
+
+//!------ GENRES AND PLATFORMS------------  
+      const platforms = ["Playstation","Xbox","Nintendo","PC","Android","IOS","Other"];
+      const error= useSelector(state => state.errors);
+      const genres = useSelector(state => state.genres);
+      const dispatch = useDispatch();
    
 //?---------HANDLERS----------------
    const handleChange = (e) => {
@@ -70,17 +78,29 @@ export default function Form(props) {
       }
    };
 
-//!------ GENRES AND PLATFORMS------------  
-   const platforms = ["Playstation","Xbox","Nintendo","PC","Android","IOS","Other"];
-   const genres = useSelector(state => state.genres);
-   const dispatch = useDispatch();
-
-
 //! -------- SEND INFO ------------------
    const handleSubmit = (e) => {
+      if(Object.keys(errors).length === 0) {
       e.preventDefault();
-      dispatch(createGame(formCreate));
+      setLoading(true);
+       dispatch(createGame(formCreate));
+
+       setFormCreate({
+         name: "",
+         description: "",
+         platforms: [],
+         image: "",
+         released: "",
+         rating: 0,
+         genre: []
+       });
+       setAllOK(true);
+      }
    };
+
+   useEffect(()=>{
+      setTimeout( setLoading(false),3000 ) 
+   },[allOk]);
 
    return (
     <div className={styles.container}>
@@ -99,18 +119,6 @@ export default function Form(props) {
          </div>
           
          <div className={styles.option}>
-            <label>Descripcion: <br />
-           <textarea 
-               value={formCreate.description}
-               name="description"
-               onChange={handleChange}>
-               </textarea>
-           </label>
-            {errors.description && <p>{errors.description}</p>}
-         </div>
-           
-
-         <div className={styles.option}>
            <label>Imagen: <br />
              <input
                name="image"
@@ -121,6 +129,30 @@ export default function Form(props) {
            </label> 
          </div>
            
+         <div className={styles.option}>
+           <label>Fecha de Lanzamiento: <br />
+               <input
+               name="released"
+               value= {formCreate.released}  
+               type="date"
+               onChange={handleChange} />
+           </label> 
+            {errors.released && <p>{errors.released}</p>}
+         </div>
+
+         <div className={styles.option}>
+            <label>Rating: <br />
+               <input 
+               name="rating"
+               value= {formCreate.rating}
+               type="number"
+               min= "0"
+               max= "5"
+               step="0.01"
+               onChange={handleChange} />
+           </label>
+            {errors.rating && <p>{errors.rating}</p>}
+         </div>
 
          <div className={styles.checkbox}>
              <label>Plataformas: <br />
@@ -158,39 +190,24 @@ export default function Form(props) {
             }
            </label> 
          </div>
+             
            
-         
          <div className={styles.option}>
-           <label>Fecha de Lanzamiento: <br />
-               <input
-               name="released"
-               value= {formCreate.released}  
-               type="date"
-               onChange={handleChange} />
-           </label> 
-            {errors.released && <p>{errors.released}</p>}
-         </div>
-           
-         
-         <div className={styles.option}>
-            <label>Rating: <br />
-               <input 
-               name="rating"
-               value= {formCreate.rating}
-               type="number"
-               min= "0"
-               max= "5"
-               step="0.01"
-               onChange={handleChange} />
+            <label>Descripcion: <br />
+           <textarea 
+               value={formCreate.description}
+               name="description"
+               onChange={handleChange}>
+               </textarea>
            </label>
-            {errors.rating && <p>{errors.rating}</p>}
+            {errors.description && <p>{errors.description}</p>}
          </div>
-           
-           <button 
-            type="submit" 
-            disabled={errors.name || errors.description || errors.image || errors.platforms || errors.genre || errors.released || errors.rating}
-            >GUARDAR</button>  
+
+         <button disabled={Object.keys(errors).length >= 1}>
+            {loading ? <>Guardando...</> : allOk ? <>Guardado!</> : <>Guardar</>}
+         </button>  
         </form>
+        {allOk && <h1 className={styles.gameSaved}>¡JUEGO CREADO CORRECTAMENTE!</h1>}
     </div>
    ) 
 }; 
