@@ -11,12 +11,11 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    overflow: auto;
     flex-direction: column;
 }
 
 .container div{
-    margin: 30px;
+    margin: 20px;
 }
 
 .aboutMe{
@@ -56,4 +55,21 @@
         -webkit-transform: scale3d(1.5, 1.5, 0.3);
         -moz-transform: scale3d(1.5, 1.5, 0.3);
   }
+
+.socialNetworks {
+    display: inline;
+    position: relative;
+    bottom:25px
+}
+.socialNetworks a{
+    font-family: priceDown;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.socialNetworks a:hover{
+color: rgb(240, 114, 202);
+}
 

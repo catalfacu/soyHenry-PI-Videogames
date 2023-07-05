@@ -46,7 +46,7 @@ function Home(props) {
         setInput={setInput}
       />
 
-      {err ? <Message errors={errors} /> : null}
+      {err ? <Message errors={errors}/> : null}
       {Loading ? <Loader /> : null}
 
       <div className={styles.cards}>

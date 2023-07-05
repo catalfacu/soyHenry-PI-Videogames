@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import styles from './form.module.css';
 import {useDispatch, useSelector} from 'react-redux';
-import { createGame } from '../../redux/actions';
+import { createGame, getAllGames } from '../../redux/actions';
+import {useNavigate} from 'react-router-dom';
 import validation from './Validation';
 
 
@@ -30,9 +31,9 @@ export default function Form(props) {
 
 //!------ GENRES AND PLATFORMS------------  
       const platforms = ["Playstation","Xbox","Nintendo","PC","Android","IOS","Other"];
-      const error= useSelector(state => state.errors);
       const genres = useSelector(state => state.genres);
       const dispatch = useDispatch();
+      const navigate = useNavigate();
    
 //?---------HANDLERS----------------
    const handleChange = (e) => {
@@ -99,8 +100,14 @@ export default function Form(props) {
    };
 
    useEffect(()=>{
-      setTimeout( setLoading(false),3000 ) 
+      setTimeout(setLoading(false),5000)
    },[allOk]);
+
+
+   const backToHome = () => {
+      dispatch(getAllGames);
+      navigate('/home');
+   };
 
    return (
     <div className={styles.container}>
@@ -208,6 +215,8 @@ export default function Form(props) {
          </button>  
         </form>
         {allOk && <h1 className={styles.gameSaved}>¡JUEGO CREADO CORRECTAMENTE!</h1>}
+        {allOk && <button onClick={()=> backToHome()} className={styles.backToHome}>Back to Home</button>}
+        
     </div>
    ) 
 }; 

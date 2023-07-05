@@ -12,17 +12,22 @@ export default function Detail(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-            dispatch(getGameDetail(id))
+            dispatch(getGameDetail(id));
+            window.scrollTo(0, 0);
         return () => {
             dispatch(clearDetail());
         }
     },[dispatch,id]);
-    console.log(errors);
     return (
         <div className={styles.container}>
+
+            <div className={styles.div1}>
             <h1 style={{'fontSize':'50px'}}>{gameDetail.name}</h1>
             <h3>{gameDetail.id}</h3>
             <img src={gameDetail.image} alt={gameDetail.name} />
+            </div>
+
+            <div className={styles.div3}>
             <h2>🎮Plataformas: </h2>
             <ul>{gameDetail.platforms?.map((platform,index) => <li key={index}>{platform}</li> )}</ul>
             <h2>⚔️Generos</h2>
@@ -31,8 +36,14 @@ export default function Detail(props) {
             <h3>{gameDetail.released}</h3>
             <h2>⭐Rating</h2>
             <h3>{gameDetail.rating}</h3>
+            <h2>💻Website</h2>
+            <a href={gameDetail.website} target="blank">{gameDetail.website}</a>
+            </div>
+
+            <div className={styles.div2}>
             <h2>📖Descripcion</h2>
-            <p style={{'font-size':'18px'}}>{gameDetail.description}</p>
+            <p style={{'font-size':'18px'}}>{gameDetail.description?.replace(/<p>|<br \/>|<\/p>/g, " ")}</p>
+            </div>
         </div>
     )
 };

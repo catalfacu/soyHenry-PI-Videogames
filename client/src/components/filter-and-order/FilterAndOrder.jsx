@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { filterByCreation, filterByGenre, orderedByAbc, orderedByRating } from '../../redux/actions';
+import { filterByCreation, filterByGenre, getAllGames, orderedByAbc, orderedByRating } from '../../redux/actions';
 import styles from './filterAndOrder.module.css';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 export default function(props) {
 const [aux, setAux] = useState(false);
@@ -41,20 +41,25 @@ const dispatch = useDispatch();
     props.setInput(1);
   };
 
+  const handleDefaultGames = () => {
+    dispatch(getAllGames());
+    props.setPage(1);
+    props.setInput(1);
+  };
 
     return(
         <div className={styles.container}>
           <label>Filtrar por origen:  
         <select name="filtarPorOrigen" onChange={handleFilterOrigin}>
-          <option value="D">Default</option>
+          <option value="D">All</option>
           <option value="A">API</option>
-          <option value="DB">Base de datos</option>
+          <option value="DB">Created</option>
          </select>
         </label>
 
         <label> Filtrar por genero: 
             <select name="filtrarPorGenero" onChange={handleFilterGenre}>
-                <option value="D">Default</option>
+                <option value="D">All</option>
                 {
                   props.genres.map((genre,id) => {
                     return <option key={id} value={genre.name}>{genre.name}</option>
@@ -62,7 +67,13 @@ const dispatch = useDispatch();
                 }
             </select>
         </label>
+        <label> Resetear: 
+          <button onClick={()=> handleDefaultGames()} >
+          Default
+        </button>
+        </label>
         
+
         <label>Ordenar alfabeticamente:  
             <select name="orderByABC" onChange={handleOrderByAbc}>
           <option value="D">Default</option>

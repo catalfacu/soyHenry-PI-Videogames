@@ -86,3 +86,15 @@
 .gameSaved{
     color:  rgb(46, 150, 46);
 }
+
+.backToHome{
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    font-family: 'Futura Bold';
+    color: white;
+    background-color: rgb(41, 212, 41);
+    border: transparent;
+    border-radius: 10px;
+    cursor:pointer
+}

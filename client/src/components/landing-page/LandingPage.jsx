@@ -13,6 +13,11 @@ function LandingPage(props) {
             <div className={styles.aboutMe}>
             <img src="https://fontmeme.com/permalink/230701/bc677451588e40819330a9718ea3f3b5.png" alt="fuente-grand-theft-auto" border="0"/>
             </div>
+            <div className={styles.socialNetworks}>
+                <a href="https://www.instagram.com/facucata23/?hl=es-la" target='blank'>IG</a>
+                <a href="https://github.com/catalfacu" target='blank'>Github</a>
+                <a href="https://www.linkedin.com/in/facundo-cataldo-9a0031272/" target='blank'>Linkedln</a>
+            </div>
         </div>
     );
 };

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 
 import styles from './searchBar.module.css';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {getGamesByName} from '../../redux/actions';
 
 export default function SearchBar(props) {
     const [name, setName] = useState("");
-    const [error, setError] = useState(false);
-    const games = useSelector(state => state.games);
-    const errors = useSelector(state => state.errors);
     const dispatch = useDispatch();
 
 
@@ -19,7 +16,7 @@ export default function SearchBar(props) {
 
     const onSearch = () => {
         dispatch(getGamesByName(name));
-        if(errors !== null) return window.alert(`${errors.status}-${errors.statusText}:${errors.data}`);
+        setName("");
     };
 
     return(
