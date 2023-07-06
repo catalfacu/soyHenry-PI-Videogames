@@ -31,6 +31,7 @@ export default function Form(props) {
 
 //!------ GENRES AND PLATFORMS------------  
       const platforms = ["Playstation","Xbox","Nintendo","PC","Android","IOS","Other"];
+      const error = useSelector(state => state.errors);
       const genres = useSelector(state => state.genres);
       const dispatch = useDispatch();
       const navigate = useNavigate();
@@ -96,6 +97,9 @@ export default function Form(props) {
          genre: []
        });
        setAllOK(true);
+      } else {
+         console.log(error);
+         return window.alert(error);
       }
    };
 
