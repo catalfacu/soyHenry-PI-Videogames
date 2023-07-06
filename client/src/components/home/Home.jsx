@@ -33,9 +33,9 @@ function Home(props) {
       setErr(false);
     }
   }, [allGames]);
-
   const max = allGames.length / amountPerPage;
-
+  
+  console.log(errors);
   return (
     <div className={styles.container}>
       <FilterAndOrder

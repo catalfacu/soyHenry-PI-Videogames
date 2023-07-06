@@ -1,27 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
 import { clearDetail, getGameDetail } from "../../redux/actions";
 import styles from "./detail.module.css";
+import Message from '../message/Message';
+import Loader from '../loader/Loader';
 
 export default function Detail(props) {
 
     const {id} = useParams();
     let gameDetail = useSelector(state => state.game);
     let errors = useSelector(state => state.errors);
+    const [error, setError] = useState(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
             dispatch(getGameDetail(id));
             window.scrollTo(0, 0);
+            setError(false);
         return () => {
             dispatch(clearDetail());
         }
     },[dispatch,id]);
+
+    useEffect(()=>{
+        if(errors !== null) return setError(true);
+    },[errors])
+    
     return (
         <div className={styles.container}>
-
             <div className={styles.div1}>
+            {error && <Message errors={errors}/>}
+            {error && <Loader/>}
             <h1 style={{'fontSize':'50px'}}>{gameDetail.name}</h1>
             <h3>{gameDetail.id}</h3>
             <img src={gameDetail.image} alt={gameDetail.name} />
