@@ -13,6 +13,7 @@ export default function Paginacion(props) {
         props.setPage(parseInt(props.page) - 1);
     };
 
+//funcion para acceder a una pagina en especifico a traves del input
     const onKeyDown = (e) => {
         if(e.keyCode === 13) {
             props.setPage(parseInt(e.target.value));

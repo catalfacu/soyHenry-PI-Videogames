@@ -15,8 +15,7 @@ export default function SearchBar(props) {
     };
 
     const onSearch = () => {
-        dispatch(getGamesByName(name));
-        setName("");
+       dispatch(getGamesByName(name));
     };
 
     return(

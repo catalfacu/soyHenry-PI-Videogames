@@ -31,7 +31,6 @@ export default function Detail(props) {
         <div className={styles.container}>
             <div className={styles.div1}>
             {error && <Message errors={errors}/>}
-            {error && <Loader/>}
             <h1 style={{'fontSize':'50px'}}>{gameDetail.name}</h1>
             <h3>{gameDetail.id}</h3>
             <img src={gameDetail.image} alt={gameDetail.name} />
@@ -46,7 +45,7 @@ export default function Detail(props) {
             <h3>{gameDetail.released}</h3>
             <h2>⭐Rating</h2>
             <h3>{gameDetail.rating}</h3>
-            <h2>💻Website</h2>
+            {gameDetail.website && <h2>💻Website</h2>}
             <a href={gameDetail.website} target="blank">{gameDetail.website}</a>
             </div>
 

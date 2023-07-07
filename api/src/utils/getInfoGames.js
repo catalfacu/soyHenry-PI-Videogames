@@ -1,6 +1,5 @@
 require('dotenv').config();
 const axios = require('axios');
-const { Op } = require('sequelize');
 const {API_KEY} = process.env;
 const {Videogame, Genre} = require('../db');
 const URL = "https://api.rawg.io/api/games";
@@ -43,8 +42,8 @@ const getApiInfo = async () => {
     return allGamesApi;
 }; 
 
-//? GET GAMES FOR DB
 
+//? GET GAMES FOR DB
 const infoDB = async () => {
     const dbVideogames = await Videogame.findAll({
         include: {

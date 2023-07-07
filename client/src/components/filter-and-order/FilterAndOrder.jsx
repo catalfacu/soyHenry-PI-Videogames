@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import { filterByCreation, filterByGenre, getAllGames, orderedByAbc, orderedByRating } from '../../redux/actions';
+
+import { filterByCreation, filterByGenre, filterByPlatform, getAllGames, orderedByAbc, orderedByRating } from '../../redux/actions';
 import styles from './filterAndOrder.module.css';
 import {useDispatch} from 'react-redux';
 
 export default function(props) {
-const [aux, setAux] = useState(false);
 const dispatch = useDispatch();
 
   const handleFilterOrigin = (e) => {
@@ -27,7 +26,6 @@ const dispatch = useDispatch();
     const {value} = e.target;
     e.preventDefault();
     dispatch(orderedByAbc(value));
-    aux ? setAux(false) : setAux(true);
     props.setPage(1);
     props.setInput(1);
   };
@@ -36,7 +34,6 @@ const dispatch = useDispatch();
     const {value} = e.target;
     e.preventDefault();
     dispatch(orderedByRating(value));
-    aux ? setAux(false) : setAux(true);
     props.setPage(1);
     props.setInput(1);
   };
@@ -47,6 +44,13 @@ const dispatch = useDispatch();
     props.setInput(1);
   };
 
+  const handleFilterByPlatform = (e) => {
+    const {value} = e.target;
+    dispatch(filterByPlatform(value));
+    props.setPage(1);
+    props.setInput(1);
+  }
+
     return(
         <div className={styles.container}>
           <label>Filtrar por origen:  
@@ -55,6 +59,15 @@ const dispatch = useDispatch();
           <option value="A">API</option>
           <option value="DB">Created</option>
          </select>
+        </label>
+
+        <label> Filtrar por plataforma:
+          <select name="filtrar por plataforma" onChange={handleFilterByPlatform}>
+            <option value="Playstation">Playstation</option>
+            <option value="Xbox">Xbox</option>
+            <option value="Nintendo">Nintendo</option>
+          </select>
+
         </label>
 
         <label> Filtrar por genero: 

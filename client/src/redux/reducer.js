@@ -1,4 +1,4 @@
-import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, ERROR, FILTER_BY_CREATION, FILTER_BY_GENRE, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES, ORDER_BY_ABC, ORDER_BY_RATING } from "./typesActions";
+import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, ERROR, FILTER_BY_CREATION, FILTER_BY_GENRE, FILTER_BY_PLATFORM, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES, ORDER_BY_ABC, ORDER_BY_RATING } from "./typesActions";
 
 
 const initialState = {
@@ -68,6 +68,13 @@ export const reducer = (state=initialState, action) => {
             return {
                 ...state,
                 games: copyGames2
+            };
+        case FILTER_BY_PLATFORM:
+            let copyGames3 = state.allGames.filter(game => game.platforms.includes(action.payload));
+
+            return {
+                ...state,
+                games: copyGames3
             };
 
         case ORDER_BY_ABC:

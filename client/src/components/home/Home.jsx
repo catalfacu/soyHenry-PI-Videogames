@@ -11,6 +11,7 @@ import Message from '../message/Message';
 
 
 function Home(props) {
+  
   //?------------PAGINATED, ALLGAMES AND ALL GENRES -----------------
   const [page, setPage] = useState(1);
   const [amountPerPage, setAmountPerPage] = useState(15);
@@ -35,7 +36,6 @@ function Home(props) {
   }, [allGames]);
   const max = allGames.length / amountPerPage;
   
-  console.log(errors);
   return (
     <div className={styles.container}>
       <FilterAndOrder

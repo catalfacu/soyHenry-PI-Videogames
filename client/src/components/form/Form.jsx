@@ -29,7 +29,7 @@ export default function Form(props) {
       genre: ""
    });
 
-//!------ GENRES AND PLATFORMS------------  
+//!------ GENRES,ERRORS AND PLATFORMS------------  
       const platforms = ["Playstation","Xbox","Nintendo","PC","Android","IOS","Other"];
       const error = useSelector(state => state.errors);
       const genres = useSelector(state => state.genres);
@@ -98,7 +98,6 @@ export default function Form(props) {
        });
        setAllOK(true);
       } else {
-         console.log(error);
          return window.alert(error);
       }
    };
@@ -137,7 +136,8 @@ export default function Form(props) {
                type="url"
                placeholder="coloque una imagen..."
                onChange= {handleChange} />  
-           </label> 
+           </label>
+           {errors.image && <p>{errors.image}</p>}
          </div>
            
          <div className={styles.option}>

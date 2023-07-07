@@ -16,7 +16,7 @@ videogamesRouter.get('/' , async(req,res) => {
                 return res.status(404).send('the game you are looking for does not exist');
             }
             return res.status(200).json(games);
-        }
+        };
         return res.status(200).json(allGames);
     } catch (error) {
         return res.status(500).json({err:error.message});
@@ -31,7 +31,7 @@ videogamesRouter.get('/:id', async(req,res) => {
         const game = await getGameById(id);
         return res.status(200).json(game);
     } catch (error) {
-        return res.status(404).json({err:error.message});
+        return res.status(404).json({ err: error.message });
     }
 })
 

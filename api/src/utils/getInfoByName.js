@@ -24,16 +24,16 @@ const gameByNameDb = async(name) => {
 
     const gamesFound = gamesDb.map( game => {
         return {
-        id: game.id,
-        name: game.name,
-        description: game.description? game.description : 'sin descripcion',
-        platforms: game.platforms?.map((platform) => platform),
-        image: game.image,
-        released: game.released,
-        rating: game.rating,
-        genres: game.genre?.map((genre) => genre.name),
-        createdInDb: game.createdInDb
-        }
+          id: game.id,
+          name: game.name,
+          description: game.description ? game.description : "sin descripcion",
+          platforms: game.platforms?.map((platform) => platform),
+          image: game.image,
+          released: game.released,
+          rating: game.rating,
+          genres: game.genre?.map((genre) => genre.name),
+          createdInDb: game.createdInDb,
+        };
     });
     return gamesFound;
 }

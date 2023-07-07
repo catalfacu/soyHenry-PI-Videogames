@@ -1,5 +1,4 @@
 const axios = require('axios');
-const {Op} = require('sequelize');
 const URL = "https://api.rawg.io/api/genres";
 const {API_KEY} = process.env;
 
