@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import styles from './searchBar.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {getGamesByName} from '../../redux/actions';
+import Swal from 'sweetalert2';
 
 export default function SearchBar(props) {
     const [name, setName] = useState("");
+    const errors = useSelector(state => state.errors);
     const dispatch = useDispatch();
 
 
@@ -18,6 +19,13 @@ export default function SearchBar(props) {
        dispatch(getGamesByName(name));
     };
 
+    useEffect(()=>{
+        if(errors) {
+            Swal.fire(`${errors.data}`)
+            setName("");
+        }
+    },[errors])
+    console.log(errors);
     return(
         <div className={styles.container}>
             <input 
