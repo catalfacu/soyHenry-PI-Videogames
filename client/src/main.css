@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'priceDown';
+  src: url(../public/assets/fonts/pricedown/pricedown\ bl.ttf);
+  font-weight: bold;
+  font-style: bold;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
