@@ -21,7 +21,11 @@ export default function SearchBar(props) {
 
     useEffect(()=>{
         if(errors) {
-            Swal.fire(`${errors.data}`)
+            Swal.fire({
+                icon: 'error',
+                title: `${errors?.status}`,
+                text: `${errors?.data}`
+            })
             setName("");
         }
     },[errors])
