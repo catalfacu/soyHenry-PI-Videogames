@@ -73,3 +73,12 @@
 color: rgb(240, 114, 202);
 }
 
+@media screen and (max-width: 750px) {
+    .container{
+        width: 100%;
+    }
+    .textPresentation {
+        width: 50%;
+        margin: 0 auto
+    }
+}
