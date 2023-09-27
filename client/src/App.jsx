@@ -5,16 +5,10 @@ import Home from './components/home/Home';
 import NavBar from './components/navbar/NavBar';
 import Form from './components/form/Form';
 import Detail from './components/detail/Detail';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 function App() {
-
-
-
-//*ROUTING
-const navigate = useNavigate();
-function goHome() {
-  navigate("/home");
-};
 
 const location = useLocation();
 
@@ -24,10 +18,12 @@ const location = useLocation();
         location.pathname !== "/" && <NavBar/>
       }
       <Routes>
-        <Route path="/" element= { <LandingPage button={goHome}/> } />
+        <Route path="/" element= { <LandingPage /> } />
         <Route path="/home" element= { <Home/> } />
         <Route path="/form" element= { <Form/> } />
         <Route path="/detail/:id" element= { <Detail/> } />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
       </Routes>
     </div>
   );
