@@ -7,6 +7,7 @@ function LandingPage(props) {
 
 function goHome() {
   navigate("/home");
+  
 };
     return(
         <div className={styles.container}>
