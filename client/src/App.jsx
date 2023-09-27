@@ -15,8 +15,11 @@ const location = useLocation();
   return (
     <div className="App">
       {
-        location.pathname !== "/" && <NavBar/>
+        location.pathname === "/" || location.pathname === "/login" || location.pathname === "/register"
+        ? null
+        : <NavBar/> 
       }
+
       <Routes>
         <Route path="/" element= { <LandingPage /> } />
         <Route path="/home" element= { <Home/> } />

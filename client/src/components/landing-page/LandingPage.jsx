@@ -1,13 +1,29 @@
 
 import styles from './landingPage.module.css';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 function LandingPage(props) {
     const navigate = useNavigate();
 
 function goHome() {
-  navigate("/home");
-  
+    Swal.fire({
+        title: 'Quiere loguearse antes de ir a la pantalla principal?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Ok',
+        denyButtonText: `No gracias`,
+        footer: '<a href="/register">No tiene una cuenta?, registrese!!</a>'
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+        navigate('/login')
+        } else if (result.isDenied) {
+        navigate('/home')
+        }
+      })
+
 };
     return(
         <div className={styles.container}>
