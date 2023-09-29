@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import styles from './landingPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -6,19 +7,26 @@ import Swal from 'sweetalert2';
 
 function LandingPage(props) {
     const navigate = useNavigate();
+    const [loginOK, setLoginOK] = useState(false);
 
 function goHome() {
     Swal.fire({
-        title: 'Quiere loguearse antes de ir a la pantalla principal?',
+        title: 'Quieres ingresar a tu cuenta?',
+        imageUrl: "https://res.cloudinary.com/dmgkhl6ys/image/upload/v1696021257/Pi/rIgiQBm4Af9qP69eXA_zily18.gif",
+        imageHeight: 400,
+        imageWidth:400,
         showDenyButton: true,
         showCancelButton: true,
         confirmButtonText: 'Ok',
         denyButtonText: `No gracias`,
-        footer: '<a href="/register">No tiene una cuenta?, registrese!!</a>'
+        background: '#F079C5',
+        color: 'whitesmoke',
+        backdrop: `rgba(0,0,123,0.4)`
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-        navigate('/login')
+        setLoginOK(true);
+        console.log(loginOK);
         } else if (result.isDenied) {
         navigate('/home')
         }
