@@ -6,6 +6,8 @@
 }
 
 .container{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -19,7 +21,15 @@
 }
 
 .aboutMe{
-    font-size: 20px;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.aboutMe img{
+    width: 15%;
 }
 
 .landingButton {
@@ -57,9 +67,7 @@
   }
 
 .socialNetworks {
-    display: inline;
-    position: relative;
-    bottom:25px
+    display: inline-flex;
 }
 .socialNetworks a{
     font-family: priceDown;
@@ -70,15 +78,20 @@
 }
 
 .socialNetworks a:hover{
-color: rgb(240, 114, 202);
+color: rgb(47, 204, 243);
 }
 
 @media screen and (max-width: 750px) {
     .container{
-        width: 100%;
+        width: 750px;
+        height: 100%;
     }
     .textPresentation {
+        width: 100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .textPresentation img{
         width: 50%;
-        margin: 0 auto
     }
 }
