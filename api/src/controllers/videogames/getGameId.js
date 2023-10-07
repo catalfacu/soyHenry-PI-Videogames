@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {gamesInfo, dBInfoId} = require('../utils/index');
+const {gamesInfo, dBInfoId} = require('../../utils/index');
 const URL = "https://api.rawg.io/api/games/";
 const {API_KEY} = process.env;
 

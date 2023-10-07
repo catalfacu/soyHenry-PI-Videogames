@@ -1,9 +1,9 @@
 const {Router} = require('express');
 const videogamesRouter = Router();
-const getAllGames = require('../controllers/getAllgames');
-const gamesByName = require('../controllers/getGamesByName');
-const getGameById = require('../controllers/getGameId');
-const postVideogame = require('../controllers/postVideogame');
+const getAllGames = require('../controllers/videogames/getAllgames');
+const gamesByName = require('../controllers/videogames/getGamesByName');
+const getGameById = require('../controllers/videogames/getGameId');
+const postVideogame = require('../controllers/videogames/postVideogame');
 
 //?---------GET ALLGAMES OR BY NAME ---------------
 videogamesRouter.get('/' , async(req,res) => {

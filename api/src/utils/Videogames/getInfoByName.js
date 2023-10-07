@@ -1,6 +1,6 @@
 
 const {Op} = require('sequelize');
-const { Videogame, Genre } = require('../db');
+const { Videogame, Genre } = require('../../db');
 
 
 

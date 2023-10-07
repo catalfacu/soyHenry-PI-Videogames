@@ -1,4 +1,4 @@
-const {infoDB, getApiInfo} = require('../utils/index');
+const {infoDB, getApiInfo} = require('../../utils/index');
 
 const getAllGames = async() => {
     const apiGames = await getApiInfo();
