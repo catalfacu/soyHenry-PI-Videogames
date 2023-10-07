@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './landingPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -9,6 +9,8 @@ import Login from '../Login/Login';
 function LandingPage(props) {
     const navigate = useNavigate();
     const [loginOK, setLoginOK] = useState(false);
+//    const [modalVisible, setModalVisible] = useState(false);
+    // const modalRef = useRef(null);
 
 function goHome() {
     Swal.fire({
@@ -27,6 +29,7 @@ function goHome() {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
         setLoginOK(true);
+        //setModalVisible(true);
         console.log(loginOK);
         } else if (result.isDenied) {
         navigate('/home')
@@ -34,6 +37,29 @@ function goHome() {
       })
 
 };
+
+// useEffect(() => {
+//     // Función para cerrar el modal cuando se hace clic fuera de él
+//     function handleClickOutside(event) {
+//       if (modalRef.current && !modalRef.current.contains(event.target)) {
+//         console.log('click afuera');
+//         // El clic ocurrió fuera del modal, cierra el modal aquí
+//         setModalVisible(false);
+//       }
+//     }
+
+//     // Agrega un oyente de eventos de clic al documento cuando el modal está visible
+//     if (modalVisible) {
+//       console.log('first')
+//       document.addEventListener("click", handleClickOutside);
+//     }
+
+//     // Limpia el oyente de eventos cuando el componente se desmonta
+//     return () => {
+//       document.removeEventListener("click", handleClickOutside);
+//     };
+//   }, [modalVisible]);
+
     return(
         <div className={styles.container}>
             <div className={styles.textPresentation}>
