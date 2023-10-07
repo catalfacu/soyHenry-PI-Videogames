@@ -1,4 +1,4 @@
-const {Videogame, Genre} = require('../db');
+const {Videogame, Genre} = require('../../db');
 
 const postVideogame = async (name,description,platforms,image,released,rating,genre,) => {
     const newGame = await Videogame.create({

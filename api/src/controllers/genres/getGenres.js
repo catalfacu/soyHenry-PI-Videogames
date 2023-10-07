@@ -1,5 +1,5 @@
-const { apiGenres } = require('../utils/index');
-const { Genre } = require('../db');
+const { apiGenres } = require('../../utils/index');
+const { Genre } = require('../../db');
 
 
 const getGenres = async () => {

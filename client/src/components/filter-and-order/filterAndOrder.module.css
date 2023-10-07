@@ -6,6 +6,7 @@
 }
 
 .container{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -43,4 +44,13 @@
     color: black;
     background-color: white;
     border: 3px solid black;
+}
+
+@media screen and (max-width: 750px) {
+    .container{
+        width: 100%;
+    }
+    .container select{
+        width: 50%;
+    }
 }

@@ -1,0 +1,41 @@
+
+.container{
+    width: 80%;
+    height: 600px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(137, 43, 226, 0.596);
+    position: fixed;
+}
+
+.LoginRegister{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.forms{
+    width: 50%;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.forms form{
+    width: 100%;
+    height: 60%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:2rem;
+}
+
+.forms label{
+    display: inline-flex;
+    flex-direction: column;
+}
+

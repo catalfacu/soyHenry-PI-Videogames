@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Videogame, Genre } = require("../db");
+const { Videogame, Genre } = require("../../db");
 
 //-------------DATABASE INFO---------
 
