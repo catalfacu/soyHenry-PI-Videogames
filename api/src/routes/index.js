@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const genderRouter = require('./genresRouter');
 const videogamesRouter = require('./videogamesRoutes');
+const usersRoutes = require('./UsersRoutes');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -17,6 +18,10 @@ router.use("/videogames", videogamesRouter);
 
 //?------------ GENRES ROUTES ---------------------------
 router.use("/genres", genderRouter);
+
+//?------------ USERS ROUTES --------------------
+
+router.use("/users", usersRoutes);
 
 
 
