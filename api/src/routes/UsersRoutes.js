@@ -44,7 +44,7 @@ usersRouter.post('/auth', async(req,res)=>{
         };
         return res.status(200).json(auth);
     } catch (error) {
-        return res.status(401).json({error,msg:'usuario no autorizado'})
+        return res.status(500).json({err: error.message})
     }
 })
 
