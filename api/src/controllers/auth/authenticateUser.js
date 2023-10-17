@@ -17,16 +17,27 @@ const authUser = async(email,password) => {
 
         const payload = {
             user: {
+                nickname: user.nickname,
                 email: user.email,
                 password: user.password,
             }
         };
 
         let token= jwt.sign(payload,SECRET_WORD,{expiresIn: '15d'});
-        return token;
+        
+        let auth = {
+            token,
+            nickname: user.nickname,
+            name: user.name,
+            lastname: user.lastname,
+            birthday: user.birthday,
+            email: user.email,
+            password: user.password,
+        };
+        return auth;
 
     } catch (error) {
-        return console.log(error);
+        return console.error(error.message);
     }
 };
 

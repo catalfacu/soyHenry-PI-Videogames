@@ -2,7 +2,9 @@ const {Router} = require('express');
 const usersRouter = Router();
 const bcrypt = require('bcrypt');
 const postUser = require('../controllers/users/PostUser');
-const authuser = require('../controllers/auth/auth');
+const authuser = require('../controllers/auth/authenticateUser');
+const authmiddle = require('../middleware/Authmiddleware');
+const authenticatedUser = require('../controllers/auth/authenticatedUser');
 
 //?----------- POST USER ---------------
 
@@ -45,6 +47,16 @@ usersRouter.post('/auth', async(req,res)=>{
         return res.status(200).json(auth);
     } catch (error) {
         return res.status(500).json({err: error.message})
+    }
+})
+
+usersRouter.get('/auth',authmiddle, async(req,res)=> {
+    try {
+        const {nickname} = req.user;
+        const user = await authenticatedUser(nickname);
+        return res.status(200).json(user);
+    } catch (error) {
+        return res.status(404).json({error: error.message});
     }
 })
 
