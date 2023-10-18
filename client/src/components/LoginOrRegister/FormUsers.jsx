@@ -1,59 +1,17 @@
 import styles from './FormUsers.module.css';
+import Login from './Login/Login';
+import Register from './Register/Register';
 
 function FormUsers() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.LoginRegister}>
-        <section className={styles.forms}>
-          <h1>Accede a tu cuenta</h1>
-          <form>
-            <label>
-              e-mail
-              <input type="email" required />
-            </label>
-            <label>
-              contraseña
-              <input type="password" required/>
-            </label>
-            <button>acceder</button>
-          </form>
-        </section>
-
-        <section className={styles.forms}>
-          <h1>Registrate</h1>
-          <form>
-            <label>
-              Nombre
-              <input type="text" />
-            </label>
-            <label>
-              Apellido
-              <input type="text" />
-            </label>
-            <label>
-              Cumpleaños
-              <input type="date" />
-            </label>
-            <label>
-              Nombre de Usuario
-              <input type= "text" />
-            </label>
-            <label>
-              E-mail
-              <input type="email" />
-            </label>
-            <label>
-              Contraseña
-              <input type="password" />
-            </label>
-            <label>
-              Confirme la contraseña
-              <input type="password" />
-            </label>
-            <button>Registrate</button>
-          </form>
-        </section>
+      <Login/>
+      <div className={styles.image}>
+        <img 
+        src="https://res.cloudinary.com/dmgkhl6ys/image/upload/v1697671127/Pi/UkthDW7BN3JVF8qmF2_1_dmdskw.gif" 
+        alt="gta_image" />
+        <h2>No tienes una cuenta?<br />Registrate!</h2>
       </div>
     </div>
   );

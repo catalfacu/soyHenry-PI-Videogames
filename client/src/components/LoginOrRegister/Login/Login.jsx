@@ -1,7 +1,8 @@
+import styles from './Login.module.css'
 
 function Login() {
   return (
-    <div>
+    <div className={styles.container}>
         <div className={styles.LoginRegister}>
         <section className={styles.forms}>
           <h1>Accede a tu cuenta</h1>
