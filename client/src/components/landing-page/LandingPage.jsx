@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './landingPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import Login from '../Login/Login';
+import FormUsers from '../LoginOrRegister/FormUsers';
 
 
 function LandingPage(props) {
@@ -41,7 +41,7 @@ function goHome() {
            <img src="https://fontmeme.com/permalink/230701/4c15be69eeb4dd1df9eaead2c7758433.png" alt="fuente-grand-theft-auto" border="0"/>
             </div>
             {
-                loginOK && <Login/>
+                loginOK && <FormUsers/>
             }
             <div className={styles.button}>
              <button className={styles.landingButton} onClick={goHome}>START!</button>

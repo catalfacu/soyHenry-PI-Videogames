@@ -1,6 +1,6 @@
-import styles from './Login.module.css';
+import styles from './FormUsers.module.css';
 
-function Login() {
+function FormUsers() {
 
   return (
     <div className={styles.container}>
@@ -59,4 +59,4 @@ function Login() {
   );
 }
 
-export default Login
+export default FormUsers;

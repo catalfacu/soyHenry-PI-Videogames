@@ -5,7 +5,7 @@ import Home from './components/home/Home';
 import NavBar from './components/navbar/NavBar';
 import Form from './components/form/Form';
 import Detail from './components/detail/Detail';
-import Login from './components/Login/Login';
+import FormUsers from './components/LoginOrRegister/FormUsers';
 
 function App() {
 
@@ -24,7 +24,7 @@ const location = useLocation();
         <Route path="/home" element= { <Home/> } />
         <Route path="/form" element= { <Form/> } />
         <Route path="/detail/:id" element= { <Detail/> } />
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={<FormUsers/>}/>
       </Routes>
     </div>
   );
