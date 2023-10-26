@@ -3,41 +3,43 @@ import styles from './Register.module.css';
 
 function Register() {
   return (
-    <div>
-        <section className={styles.forms}>
-          <h1>Registrate</h1>
-          <form>
-            <label>
-              Nombre
-              <input type="text" />
-            </label>
-            <label>
-              Apellido
-              <input type="text" />
-            </label>
-            <label>
-              Cumpleaños
-              <input type="date" />
-            </label>
-            <label>
-              Nombre de Usuario
-              <input type= "text" />
-            </label>
-            <label>
-              E-mail
-              <input type="email" />
-            </label>
-            <label>
-              Contraseña
-              <input type="password" />
-            </label>
-            <label>
-              Confirme la contraseña
-              <input type="password" />
-            </label>
-            <button>Registrate</button>
-          </form>
-        </section>
+    <div className={styles.container}>
+       <div className={styles.text}>
+        <h1>Registrate</h1>
+       </div>
+       <div className={styles.form}>
+        <form>
+          <label>
+            Nombre
+            <input type="text" />
+          </label>
+          <label>
+            Apellido
+            <input type="text" />
+          </label>
+          <label>
+            Nombre de Usuario
+            <input type="text" />
+          </label>
+          <label>
+            Fecha de Nacimiento
+            <input type="date" />
+          </label>
+          <label>
+            Email
+            <input type="text" />
+          </label>
+          <label>
+            Password
+            <input type="password" />
+          </label>
+          <label>
+            Confirme Password
+            <input type="password" />
+          </label>
+          <button>Registrate</button>
+        </form>
+       </div>
     </div>
   )
 }

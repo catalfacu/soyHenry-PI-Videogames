@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid white;
+    width: 100%;
+    height: 100%;
+}
+
+.form form{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form label{
+    display: inline-flex;
+    flex-direction: column;
+
+}
+
+.form button{
+    height: 28px;
+}
