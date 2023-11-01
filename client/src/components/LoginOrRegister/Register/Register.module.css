@@ -26,6 +26,12 @@
     width: 50%;
 }
 
+.form span{
+    display: block;
+    color: red;
+    font-size: x-small;
+}
+
 .containerForm{
     display: flex;
     justify-content: center;
