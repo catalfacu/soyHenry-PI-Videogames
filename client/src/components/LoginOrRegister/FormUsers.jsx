@@ -24,6 +24,8 @@ const handlerOpenCloseForms = () => {
         : <Login/>
       }
 
+    <button onClick={handlerOpenCloseForms} className={styles.buttonClose}>X</button>
+
       {
         changeForm
         ? <div className={styles.image}>
@@ -45,7 +47,6 @@ const handlerOpenCloseForms = () => {
         
       </div>
       }
-      <button onClick={handlerOpenCloseForms}>X</button>
     </div>
   );
 }

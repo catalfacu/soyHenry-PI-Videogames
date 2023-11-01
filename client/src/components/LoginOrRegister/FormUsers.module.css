@@ -9,6 +9,14 @@
     position: fixed;
 }
 
+.buttonClose{
+    display: inline;
+    position: absolute;
+    left: 51%;
+    bottom: 95%
+    
+}
+
 .image{
     border: 1px solid white;
     height: 100%;
