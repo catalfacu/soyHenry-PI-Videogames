@@ -32,12 +32,13 @@ const handlerOpenCloseForms = () => {
             <br />
             Logueate!
           </h2>
-          <a onClick={handleChangeFormFalse}>
+          
             <img
+              onClick={handleChangeFormFalse}
               src="https://res.cloudinary.com/dmgkhl6ys/image/upload/v1697671125/Pi/NcjUqfjygaljY9uXQG_s2s4mt.gif"
               alt="gta_image"
             />
-          </a>
+          
         </div>
       ) : (
         <div className={styles.image}>
@@ -46,12 +47,13 @@ const handlerOpenCloseForms = () => {
             <br />
             Registrate!
           </h2>
-          <a onClick={handleChangeFormTrue}>
+          
             <img
+              onClick={handleChangeFormTrue}
               src="https://res.cloudinary.com/dmgkhl6ys/image/upload/v1697671127/Pi/UkthDW7BN3JVF8qmF2_1_dmdskw.gif"
               alt="gta_image"
             />
-          </a>
+          
         </div>
       )}
     </div>

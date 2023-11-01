@@ -23,12 +23,9 @@
     border: 1px solid white;
     height: 100%;
     width: 50%;
-}
-
-.image a{
-    background: transparent;
     cursor: pointer;
 }
+
 
 .disabled{
     display: none;
