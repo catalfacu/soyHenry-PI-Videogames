@@ -11,15 +11,23 @@
 .form form{
     display: inline-flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
 }
 
 .form label{
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
 
 }
 
 .form button{
     height: 28px;
+    width: 50%;
+}
+
+.containerForm{
+    display: flex;
+    justify-content: center;
+    gap:20px;
 }

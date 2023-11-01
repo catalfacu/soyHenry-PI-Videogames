@@ -12,9 +12,11 @@
 .buttonClose{
     display: inline;
     position: absolute;
-    left: 51%;
-    bottom: 95%
-    
+    left: 95%;
+    bottom: 92%;
+    background: transparent;
+    border: transparent;
+    cursor: pointer
 }
 
 .image{
@@ -30,4 +32,14 @@
 
 .disabled{
     display: none;
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
+    color: whitesmoke
+}
+
+.icon:hover{
+    color:black
 }
