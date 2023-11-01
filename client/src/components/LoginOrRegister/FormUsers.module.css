@@ -19,3 +19,7 @@
     background: transparent;
     cursor: pointer;
 }
+
+.disabled{
+    display: none;
+}

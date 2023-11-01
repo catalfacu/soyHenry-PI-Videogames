@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './landingPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -9,6 +9,7 @@ import FormUsers from '../LoginOrRegister/FormUsers';
 function LandingPage(props) {
     const navigate = useNavigate();
     const [loginOK, setLoginOK] = useState(false);
+    const [formsVisibility, setFormsVisibility] = useState(true)
 
 function goHome() {
     Swal.fire({
@@ -27,6 +28,7 @@ function goHome() {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
         setLoginOK(true);
+        setFormsVisibility(true);
         console.log(loginOK);
         } else if (result.isDenied) {
         navigate('/home')
@@ -35,13 +37,16 @@ function goHome() {
 
 };
 
+const handleFormsVisibility = () => {
+    setFormsVisibility(false)
+};
     return(
         <div className={styles.container}>
             <div className={styles.textPresentation}>
            <img src="https://fontmeme.com/permalink/230701/4c15be69eeb4dd1df9eaead2c7758433.png" alt="fuente-grand-theft-auto" border="0"/>
             </div>
             {
-                loginOK && <FormUsers/>
+                loginOK && <FormUsers handleFormsVisibility={handleFormsVisibility} formsVisibility={formsVisibility}/>
             }
             <div className={styles.button}>
              <button className={styles.landingButton} onClick={goHome}>START!</button>

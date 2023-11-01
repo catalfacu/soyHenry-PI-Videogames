@@ -3,7 +3,7 @@ import styles from './FormUsers.module.css';
 import Login from './Login/Login';
 import Register from './Register/Register';
 
-function FormUsers() {
+function FormUsers({formsVisibility, handleFormsVisibility}) {
 const [changeForm, setChangeForm] = useState(false);
 
 const handleChangeFormTrue = () => {
@@ -13,8 +13,11 @@ const handleChangeFormFalse = () => {
     setChangeForm(false);
 };
 
+const handlerOpenCloseForms = () => {
+  handleFormsVisibility();
+};
   return (
-    <div className={styles.container}>
+    <div className={formsVisibility ? styles.container : styles.disabled}>
       {
         changeForm 
         ? <Register/>
@@ -42,8 +45,7 @@ const handleChangeFormFalse = () => {
         
       </div>
       }
-      
-      
+      <button onClick={handlerOpenCloseForms}>X</button>
     </div>
   );
 }
