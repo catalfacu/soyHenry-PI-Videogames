@@ -1,13 +1,33 @@
 import styles from './Register.module.css';
 import {useForm} from 'react-hook-form';
-
+import {useDispatch, useSelector} from 'react-redux';
+import { createUser } from '../../../redux/actions';
+import {useNavigate} from 'react-router-dom';
+ 
 function Register() {
-
+const dispatch = useDispatch();
+const navigate = useNavigate();
 const {register,handleSubmit, formState: {errors}, watch } = useForm();
-console.log(errors); 
-const onSubmit= handleSubmit((data)=> { 
-  console.log(data);
-})
+
+
+//funcion submit que toma los datos para desapchar la accion de registro a redux
+const onSubmit= handleSubmit((data)=> {
+  const {name, lastname, birthday, nickname, email, password} = data 
+  const userData = {
+    name,
+    lastname,
+    birthday,
+    nickname,
+    email,
+    password,
+  };
+
+  dispatch(createUser(userData));
+  navigate('/');
+});
+
+const users = useSelector(state => state.users);
+console.log(users);
 
   return (
     <div className={styles.container}>

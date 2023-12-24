@@ -1,4 +1,4 @@
-import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, ERROR, FILTER_BY_CREATION, FILTER_BY_GENRE, FILTER_BY_PLATFORM, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES, ORDER_BY_ABC, ORDER_BY_RATING } from "./typesActions";
+import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, CREATE_USER, ERROR, FILTER_BY_CREATION, FILTER_BY_GENRE, FILTER_BY_PLATFORM, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES, ORDER_BY_ABC, ORDER_BY_RATING } from "./typesActions";
 
 
 const initialState = {
@@ -6,11 +6,19 @@ const initialState = {
     games: [],
     game: [],
     genres: [],
+    users: [],
     errors: null
 };
 
 export const reducer = (state=initialState, action) => {
     switch(action.type) {
+
+        case CREATE_USER:
+            return {
+                ...state,
+                users: [...state.users, action.payload],
+                errors: null
+            };
         case ADD_ALLGAMES:
             return {
                 ...state,

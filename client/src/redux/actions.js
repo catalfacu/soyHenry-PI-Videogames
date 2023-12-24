@@ -1,8 +1,26 @@
-import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, ERROR, FILTER_BY_CREATION, FILTER_BY_GENRE, FILTER_BY_PLATFORM, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES, ORDER_BY_ABC, ORDER_BY_RATING } from "./typesActions";
+import { ADD_ALLGAMES, CLEAR_DETAIL, CREATE_GAME, CREATE_USER, ERROR, FILTER_BY_CREATION, FILTER_BY_GENRE, FILTER_BY_PLATFORM, GAMESBYNAME, GET_GAMEDETAIL, GET_GENRES, ORDER_BY_ABC, ORDER_BY_RATING } from "./typesActions";
 import axios from 'axios';
 const ENDPOINT = 'http://localhost:3001/videogames';
 const ENDPOINT_GENRES = 'http://localhost:3001/genres';
+const ENDPOINT_USERS = 'http://localhost:3001/users';
 
+
+export const createUser = (user) => {
+    return async(dispatch) => {
+        try {
+            const {data} = await axios.post(ENDPOINT_USERS, user);
+            dispatch({
+                type: CREATE_USER,
+                payload: data,
+            });
+        } catch (error) {
+            dispatch({
+                type: ERROR,
+                data: error.message,
+            });
+        }
+    }
+}
 
 export const getAllGames = () => {
     return (dispatch) => {

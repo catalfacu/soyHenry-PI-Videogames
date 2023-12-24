@@ -10,3 +10,4 @@ export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const FILTER_BY_PLATFORM = "FILTER_BY_PLATFORM";
 export const ORDER_BY_ABC = "ORDER_BY_ABC";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
+export const CREATE_USER = "CREATE_USER";
