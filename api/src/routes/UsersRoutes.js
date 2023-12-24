@@ -5,6 +5,19 @@ const postUser = require('../controllers/users/PostUser');
 const authuser = require('../controllers/auth/authenticateUser');
 const authmiddle = require('../middleware/Authmiddleware');
 const authenticatedUser = require('../controllers/auth/authenticatedUser');
+const getAllUsers = require('../controllers/users/getUsers');
+
+
+//?----------- GET USERS ---------------
+
+usersRouter.get('/', async(req,res) => {
+    try {
+        const allUsers = await getAllUsers();
+        return res.status(200).json(allUsers);
+    } catch (error) {
+        return res.status(500).json({err: error.message})
+    }
+})
 
 //?----------- POST USER ---------------
 
